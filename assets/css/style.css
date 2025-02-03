@@ -7,6 +7,14 @@ main {
     padding: 10px;
 }
 
+#game-board-outer {
+    perspective: 1000px;
+}
+
+#game-board {
+    transform: rotateX(7deg) translateY(-30px);
+}
+
 #game-board,
 #game-controls {
     max-width: 62vh;
