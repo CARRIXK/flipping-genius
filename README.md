@@ -15,6 +15,7 @@ This project is built using the following technologies:
 - Google Fonts – Custom typography
 - FontAwesome – Icons for UI enhancements
 - CSS-Pattern.com - Used for the back style of the cards
+- RealFaviconGenerator - Create a favicon file
 
 ## Development Team
 
