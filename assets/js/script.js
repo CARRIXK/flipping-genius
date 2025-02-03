@@ -43,9 +43,12 @@ function createBoard(rows, cols) {
 
     // Create an array of card values with pairs
     const cardValues = [];
-    for (let i = 1; i <= (rows * cols) / 2; i++) {
-        cardValues.push(cards[i]);
-        cardValues.push(cards[i]);
+    const totalCards = rows * cols;
+    const uniqueCards = Object.keys(cards).length;
+
+    for (let i = 1; i <= totalCards / 2; i++) {
+        cardValues.push(cards[(i - 1) % uniqueCards + 1]);
+        cardValues.push(cards[(i - 1) % uniqueCards + 1]);
     }
 
     // Shuffle the card values
