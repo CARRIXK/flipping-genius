@@ -2,8 +2,8 @@ main {
     padding: 30px;
 }
 
-#game-board {
-    max-width: 67vh;
+#game-board, #game-controls {
+    max-width: 64vh;
 }
 
 #game-board .game-row {
