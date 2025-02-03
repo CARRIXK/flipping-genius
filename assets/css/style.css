@@ -20,9 +20,14 @@ main {
     transform: rotateX(7deg) translateY(-30px);
 }
 
+header,
 #game-board,
 #game-controls {
     max-width: 62vh;
+}
+
+#game-board,
+#game-controls {
     background: rgba(0 0 0 / 0.3);
 }
 

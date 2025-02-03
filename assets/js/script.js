@@ -1,19 +1,42 @@
 const cards = {
-    1: '🍕',
-    2: '🍔',
-    3: '🍟',
-    4: '🌭',
-    5: '🍦',
-    6: '🍩',
-    7: '🍪',
-    8: '🍰',
+    animals: {
+        1: '🐶',
+        2: '🐱',
+        3: '🐭',
+        4: '🐹',
+        5: '🐰',
+        6: '🦊',
+        7: '🐻',
+        8: '🐼',
+    },
+    fruits: {
+        1: '🍎',
+        2: '🍌',
+        3: '🍇',
+        4: '🍉',
+        5: '🍓',
+        6: '🍒',
+        7: '🍑',
+        8: '🍍',
+    },
+    vehicles: {
+        1: '🚗',
+        2: '🚕',
+        3: '🚙',
+        4: '🚌',
+        5: '🚎',
+        6: '🏎️',
+        7: '🚓',
+        8: '🚑',
+    }
 };
 
 let gameRows = 4;
 let gameCols = 4;
+let selectedCategory = 'animals';
 
 document.getElementById('start-game').addEventListener('click', () => {
-    createBoard(gameRows, gameCols);
+    createBoard(gameRows, gameCols, selectedCategory);
 });
 
 document.getElementById('difficulty-setting').addEventListener('change', (event) => {
@@ -32,10 +55,15 @@ document.getElementById('difficulty-setting').addEventListener('change', (event)
             gameCols = 8;
             break;
     }
-    createBoard(gameRows, gameCols);
+    createBoard(gameRows, gameCols, selectedCategory);
 });
 
-function createBoard(rows, cols) {
+document.getElementById('category-setting').addEventListener('change', (event) => {
+    selectedCategory = event.target.value;
+    createBoard(gameRows, gameCols, selectedCategory);
+});
+
+function createBoard(rows, cols, category) {
     // Get the game-board section
     const board = document.getElementById('game-board');
     // Clear any existing content
@@ -44,11 +72,12 @@ function createBoard(rows, cols) {
     // Create an array of card values with pairs
     const cardValues = [];
     const totalCards = rows * cols;
-    const uniqueCards = Object.keys(cards).length;
+    const categoryCards = cards[category];
+    const uniqueCards = Object.keys(categoryCards).length;
 
     for (let i = 1; i <= totalCards / 2; i++) {
-        cardValues.push(cards[(i - 1) % uniqueCards + 1]);
-        cardValues.push(cards[(i - 1) % uniqueCards + 1]);
+        cardValues.push(categoryCards[(i - 1) % uniqueCards + 1]);
+        cardValues.push(categoryCards[(i - 1) % uniqueCards + 1]);
     }
 
     // Shuffle the card values
@@ -82,7 +111,7 @@ function createBoard(rows, cols) {
 }
 
 function flipCard() {
-
+    // Flip card logic here
 }
 
-createBoard(gameRows, gameCols);
+createBoard(gameRows, gameCols, selectedCategory);

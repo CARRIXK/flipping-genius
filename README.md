@@ -34,6 +34,8 @@ We have followed Agile planning methodologies, breaking down the development pro
 
 ## Deployment
 
+The site has been set up using GitHub Pages and can be accessed here [https://carrixk.github.io/flipping-genius/](https://carrixk.github.io/flipping-genius/)
+
 ## Future Enhancements
 
 ## License
