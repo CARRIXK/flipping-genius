@@ -16,6 +16,25 @@ document.getElementById('start-game').addEventListener('click', () => {
     createBoard(gameRows, gameCols);
 });
 
+document.getElementById('difficulty-setting').addEventListener('change', (event) => {
+    const difficulty = event.target.value;
+    switch (difficulty) {
+        case 'easy':
+            gameRows = 4;
+            gameCols = 4;
+            break;
+        case 'medium':
+            gameRows = 6;
+            gameCols = 6;
+            break;
+        case 'hard':
+            gameRows = 8;
+            gameCols = 8;
+            break;
+    }
+    createBoard(gameRows, gameCols);
+});
+
 function createBoard(rows, cols) {
     // Get the game-board section
     const board = document.getElementById('game-board');
