@@ -3,7 +3,7 @@ main {
 }
 
 #game-board {
-    width: 75%;
+    max-width: 67vh;
 }
 
 #game-board .game-row {
