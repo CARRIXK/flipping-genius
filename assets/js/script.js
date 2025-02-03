@@ -22,8 +22,8 @@ function createBoard(rows, cols) {
             const cardBack = document.createElement('div');
             cardBack.className = 'card-back';
 
-            card.appendChild(cardBack);
             card.appendChild(cardFront);
+            card.appendChild(cardBack);
             card.addEventListener('click', flipCard);
 
             rowElement.appendChild(card);
