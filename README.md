@@ -14,6 +14,7 @@ This project is built using the following technologies:
 - Bootstrap – Responsive design and layout
 - Google Fonts – Custom typography
 - FontAwesome – Icons for UI enhancements
+- CSS-Pattern.com - Used for the back style of the cards
 
 ## Development Team
 
