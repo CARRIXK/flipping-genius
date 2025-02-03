@@ -7,18 +7,29 @@ function createBoard(rows, cols) {
     board.innerHTML = '';
 
     for (let row = 0; row < rows; row++) {
-        const row = document.createElement('div');
-        row.className = 'row';
+        const rowElement = document.createElement('div');
+        rowElement.className = 'game-row';
 
         for (let col = 0; col < cols; col++) {
             const card = document.createElement('div');
-            card.className = 'card';
-            card.dataset.value = cards[row * 4 + col];
+            card.className = 'game-card';
+            card.dataset.value = cards[row * cols + col];
+
+            const cardFront = document.createElement('div');
+            cardFront.className = 'card-front';
+            cardFront.innerText = cards[row * cols + col]; // This should be the image for the card
+
+            const cardBack = document.createElement('div');
+            cardBack.className = 'card-back';
+
+            card.appendChild(cardBack);
+            card.appendChild(cardFront);
             card.addEventListener('click', flipCard);
-            row.appendChild(card);
+
+            rowElement.appendChild(card);
         }
 
-        board.appendChild(row);
+        board.appendChild(rowElement);
     }
 }
 
