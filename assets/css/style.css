@@ -1,10 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 main {
-    padding: 30px;
+    padding: 10px;
 }
 
 #game-board,
 #game-controls {
-    max-width: 64vh;
+    max-width: 62vh;
 }
 
 #game-board .game-row {
