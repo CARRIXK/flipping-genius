@@ -90,58 +90,70 @@ function populateCategoryDropdown() {
 function createBoard(rows, cols, category) {
     // Get the game-board section
     const board = document.getElementById('game-board');
-    // Clear any existing content
-    board.innerHTML = '';
 
-    // Create an array of card values with pairs
-    const cardValues = [];
-    const totalCards = rows * cols;
-    const categoryCards = cards[category];
-    const uniqueCards = categoryCards.length;
+    // Apply remove animation to existing cards
+    const existingCards = board.querySelectorAll('.game-card');
+    existingCards.forEach((card, index) => {
+        card.style.transform = 'translateY(0) rotateX(0)'; // Set initial state
+        card.style.zIndex = 0; // Ensure the card is above the new cards
+        card.classList.add('removing');
+        card.style.animationDelay = `${index * 0.1}s`;
+    });
 
-    for (let i = 0; i < totalCards / 2; i++) {
-        cardValues.push(categoryCards[i % uniqueCards]);
-        cardValues.push(categoryCards[i % uniqueCards]);
-    }
+    // Wait for the remove animation to finish before clearing the board and adding new cards
+    setTimeout(() => {
+        // Clear any existing content
+        board.innerHTML = '';
 
-    // Shuffle the card values
-    cardValues.sort(() => 0.5 - Math.random());
+        // Create an array of card values with pairs
+        const cardValues = [];
+        const totalCards = rows * cols;
+        const categoryCards = cards[category];
+        const uniqueCards = categoryCards.length;
 
-    let cardIndex = 0;
-    for (let row = 0; row < rows; row++) {
-        const rowElement = document.createElement('div');
-        rowElement.className = 'game-row';
-
-        for (let col = 0; col < cols; col++) {
-            const card = document.createElement('div');
-            card.className = 'game-card';
-            card.dataset.id = cardValues[cardIndex].id;
-
-            const cardFront = document.createElement('div');
-            cardFront.className = 'card-front';
-            cardFront.style.backgroundImage = `url(${cardValues[cardIndex].url})`;
-
-            const cardBack = document.createElement('div');
-            cardBack.className = 'card-back';
-
-            card.appendChild(cardFront);
-            card.appendChild(cardBack);
-            card.addEventListener('click', flipCard);
-
-            // Add a delay to the animation for each card
-            card.style.animationDelay = `${cardIndex * 0.1}s`;
-
-            rowElement.appendChild(card);
-            cardIndex++;
+        for (let i = 0; i < totalCards / 2; i++) {
+            cardValues.push(categoryCards[i % uniqueCards]);
+            cardValues.push(categoryCards[i % uniqueCards]);
         }
 
-        board.appendChild(rowElement);
-    }
+        // Shuffle the card values
+        cardValues.sort(() => 0.5 - Math.random());
+
+        let cardIndex = 0;
+        for (let row = 0; row < rows; row++) {
+            const rowElement = document.createElement('div');
+            rowElement.className = 'game-row';
+
+            for (let col = 0; col < cols; col++) {
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.dataset.id = cardValues[cardIndex].id;
+
+                const cardFront = document.createElement('div');
+                cardFront.className = 'card-front';
+                cardFront.style.backgroundImage = `url(${cardValues[cardIndex].url})`;
+
+                const cardBack = document.createElement('div');
+                cardBack.className = 'card-back';
+
+                card.appendChild(cardFront);
+                card.appendChild(cardBack);
+                card.addEventListener('click', flipCard);
+
+                // Add a delay to the animation for each card
+                card.style.animationDelay = `${cardIndex * 0.1}s`;
+
+                rowElement.appendChild(card);
+                cardIndex++;
+            }
+
+            board.appendChild(rowElement);
+        }
+    }, existingCards.length * 100); // Adjust the timeout based on the number of existing cards
 }
 
 function flipCard(e) {
     // Flip card logic here
-    // console.log(e.currentTarget);
     let card = e.currentTarget;
     card.classList.toggle('flipped');
 
