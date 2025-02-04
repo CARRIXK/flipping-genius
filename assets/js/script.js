@@ -78,12 +78,12 @@ document.getElementById("category-setting").addEventListener("change", (event) =
 });
 
 document.getElementById('game-controls-viewer').addEventListener('click', () => {
-    const gameControls = document.getElementById('game-controls');
-    if (gameControls.style.height === '0px' || gameControls.style.height === '') {
-        gameControls.style.height = `${gameControls.scrollHeight + 17}px`;
-    } else {
-        gameControls.style.height = '0px';
-    }
+  const gameControls = document.getElementById('game-controls');
+  if (gameControls.style.height === '0px' || gameControls.style.height === '') {
+    gameControls.style.height = `${gameControls.scrollHeight + 17}px`;
+  } else {
+    gameControls.style.height = '0px';
+  }
 });
 
 function populateCategoryDropdown() {
@@ -217,17 +217,15 @@ function flipCard(e) {
   } else {
     console.log(`Only ${flippedCards.length} card has been flipped`);
   }
-} else {
-  console.log(`Only ${flippedCards.length} card has been flipped`);
-}
 
-    //     if(firstCard.firstChild.textContent === secondCard.firstChild.textContent){
-    //         console.log("There is a match");
+  //}
+  //     if(firstCard.firstChild.textContent === secondCard.firstChild.textContent){
+  //         console.log("There is a match");
 
-    //     }else{
-    //         console.log("No match");
-    //     }
-    // }
+  //     }else{
+  //         console.log("No match");
+  //     }
+  // }
 }
 
 function increaseMatchCount() {
