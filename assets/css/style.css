@@ -65,4 +65,5 @@ header,
 
 #game-board .game-card .card-front {
     background-color: #FFFFFF;
+    background-size: cover;
 }
