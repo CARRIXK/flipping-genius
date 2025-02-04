@@ -110,6 +110,13 @@ function createBoard(rows, cols, category) {
     }
 }
 
+
+
+/**
+ * 
+ * Click event handler for which adds flipped class to clicked game card and compares flipped 
+ * cards when the number of flipped cards is 2
+ */
 function flipCard(e) {
     // Flip card logic here
     // console.log(e.currentTarget);
@@ -118,6 +125,7 @@ function flipCard(e) {
 
     //when a card is flipped check if there is another card flipped
     let flippedCards = document.querySelectorAll(".flipped");
+    increaseMatchCount()
     // if(flippedCards.length > 1){
 
     //     let firstCard = flippedCards[0];
@@ -133,6 +141,12 @@ function flipCard(e) {
     // }
 
 }
+
+function increaseMatchCount(){
+    let newCount  = parseInt(document.getElementById("matchCount").innerText) + 1;
+    document.getElementById("matchCount").innerText = newCount;
+}
+
 
 
 createBoard(gameRows, gameCols, selectedCategory);
