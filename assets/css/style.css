@@ -1,11 +1,12 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
 
 body {
-    background: rgb(107,35,108);
-    background: linear-gradient(180deg, rgba(107,35,108,1) 0%, rgba(42,68,145,1) 100%);
+    background: rgb(107, 35, 108);
+    background: linear-gradient(180deg, rgba(107, 35, 108, 1) 0%, rgba(42, 68, 145, 1) 100%);
 }
 
 main {
@@ -14,6 +15,7 @@ main {
 
 #game-board-outer {
     perspective: 1000px;
+    overflow: hidden;
 }
 
 #game-board {
@@ -23,12 +25,13 @@ main {
 header,
 #game-board,
 #game-controls {
-    max-width: 62vh;
+    max-width: 60vh;
 }
 
 #game-board,
 #game-controls {
     background: rgba(0 0 0 / 0.3);
+    position: relative;
 }
 
 #game-board .game-row {
@@ -40,6 +43,20 @@ header,
     flex: 0 1 100%;
     aspect-ratio: 3 / 4;
     position: relative;
+    perspective: 1000px;
+    /* Enables 3D effect */
+    transform-style: preserve-3d;
+    /* Allows child elements to rotate properly */
+    transition: transform 0.6s ease-in-out;
+    border-radius: 10px;
+}
+
+.game-card.deal {
+    animation: dealCards 0.5s ease-in-out forwards;
+}
+
+#game-board .game-card.removing {
+    animation: removeCards 0.5s ease-in-out forwards;
 }
 
 #game-board .game-card>div {
@@ -48,11 +65,12 @@ header,
     border: 1px solid black;
     border-radius: 10px;
     position: absolute;
-    transition: transform 0.8s;
+
 }
 
 #game-board .game-card .card-back {
-    --s: 60px; /* control the size of the pattern */
+    --s: 60px;
+    /* control the size of the pattern */
     --c1: #1d1d1d;
     --c2: #4e4f51;
     --c3: #3c3c3c;
@@ -64,5 +82,102 @@ header,
 }
 
 #game-board .game-card .card-front {
+    display: flex;
+    /* Enables Flexbox */
+    font-size: 2em;
+    align-items: center;
+    /* Centers content vertically */
+    justify-content: center;
+    /* Centers content horizontally */
     background-color: #FFFFFF;
+    background-size: cover;
+    transform: rotateY(180deg); /* Initially hidden */
+}
+
+#game-controls-viewer {
+    color: #FFFFFF;
+    position: absolute;
+    top: -35px;
+    border: 1px solid #ffffff;
+    padding: 5px 10px;
+    left: 0;
+    background-color: rgb(0 0 0 / 0.3);
+    border-bottom: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+#game-board .game-card .card-front,
+#game-board .game-card .card-back{
+    backface-visibility: hidden; /* Hides the back side when flipping */
+}
+
+/* Flip Effect */
+#game-board .game-card.flipped {
+    transform: rotateY(180deg); /* Flip the entire card */
+}
+
+/* Prevent matched cards from being clicked */
+.game-card.matched {
+    border: 5px solid green;
+    pointer-events: none;  /* Prevent further clicks */
+    cursor: default;
+}
+
+@keyframes dealCards {
+    from {
+        transform: translateY(100vh) rotateX(90deg);
+    }
+
+    to {
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+@keyframes removeCards {
+    from {
+        transform: translateY(0) rotateX(0);
+        z-index: 1;
+    }
+
+    to {
+        transform: translateY(100vh) rotateX(90deg);
+        z-index: 1;
+    }
+}
+
+@media all and (max-width: 760px) {
+    #game-controls {
+        flex-wrap: wrap;
+    }
+
+    #game-controls-viewer {
+        display: block;
+    }
+
+    #game-controls {
+        position: fixed;
+        bottom: -4px;
+        background-color: #31418d;
+        width: calc(100% - 19px);
+        height: 0;
+        transition: height 0.3s;
+    }
+}
+
+@media all and (max-width: 450px) {
+    header {
+        flex-direction: column;
+    }
+
+    header img {
+        width: 100px;
+    }
+
+    #game-timer {
+        order: 1;
+        margin: 5px 0;
+    }
 }
