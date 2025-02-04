@@ -143,18 +143,65 @@ function createBoard(rows, cols, category) {
   }
 }
 
+
+
+/**
+ * Handles the logic for flipping a card in a card matching game.
+ * 
+ * @param {Event} e - The event object triggered by clicking a card.
+ * 
+ * The function performs the following steps:
+ * 1. Retrieves the clicked card and currently flipped cards.
+ * 2. Prevents flipping more than two cards at a time.
+ * 3. Flips the clicked card and updates the list of flipped cards.
+ * 4. If two cards are flipped, checks if they match:
+ *    - If they match, increases the match count and marks the cards as matched.
+ *    - If they do not match, flips the cards back after a delay.
+ */
 function flipCard(e) {
-  // Flip card logic here
-  // console.log(e.currentTarget);
-  let card = e.currentTarget;
-  card.classList.toggle("flipped");
+    // Flip card logic here
+    let card = e.currentTarget;
 
-  //when a card is flipped check if there is another card flipped
-  let flippedCards = document.querySelectorAll(".flipped");
-  // if(flippedCards.length > 1){
+    //Currently flipped cards
+    let flippedCards = document.querySelectorAll(".flipped");
 
-  //     let firstCard = flippedCards[0];
-  //     let secondCard = flippedCards[1];
+    // console.log("Number of flipped cards" , flippedCards.length)
+    //Prevent flipping more than two cards
+    if(flippedCards.length >= 2) return;
+
+    // Flip the clicked card
+    card.classList.add("flipped");
+
+    // Update flipped cards after flipping the new one
+    flippedCards = document.querySelectorAll(".flipped");
+
+    //Only check when two cards are flipped
+    if(flippedCards.length === 2){
+
+        let firstCard = flippedCards[0];
+        let secondCard = flippedCards[1];
+        
+        if(firstCard.dataset.id === secondCard.dataset.id){
+            console.log("There is a match");
+            //increase the match count
+            increaseMatchCount();
+            //for each of the flipped cards add the matched class
+            setTimeout(() => {
+                flippedCards.forEach(card => card.classList.replace("flipped", "matched")); 
+            }, 800 ); 
+
+        }else{
+            console.log("No match");
+            //wait 0.8 seconds then remove the flipped class from each card
+            setTimeout(() => {
+                flippedCards.forEach(card => card.classList.toggle("flipped"));
+            }, 800 ); 
+
+            console.log("cards class list", card.classList);
+        }
+    }else{
+        console.log(`Only ${flippedCards.length} card has been flipped`);
+    }
 
   //     if(firstCard.firstChild.textContent === secondCard.firstChild.textContent){
   //         console.log("There is a match");
@@ -163,6 +210,11 @@ function flipCard(e) {
   //         console.log("No match");
   //     }
   // }
+}
+
+function increaseMatchCount(){
+    let newCount  = parseInt(document.getElementById("matchCount").innerText) + 1;
+    document.getElementById("matchCount").innerText = newCount;
 }
 
 // Populate the category dropdown on page load
