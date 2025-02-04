@@ -107,6 +107,8 @@ function createBoard(rows, cols, category) {
 
   // reset the match count
   document.getElementById("matchCount").innerText = 0;
+  // reset the attempts count
+  document.getElementById("attemptCount").innerText = 0;
   // Reset the timer
   resetTimer();
 
