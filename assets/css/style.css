@@ -89,6 +89,7 @@ header,
     /* Centers content horizontally */
     background-color: #FFFFFF;
     background-size: cover;
+    transform: rotateY(180deg); /* Initially hidden */
 }
 
 #game-controls-viewer {
@@ -104,6 +105,23 @@ header,
     border-top-right-radius: 5px;
     cursor: pointer;
     display: none;
+}
+
+#game-board .game-card .card-front,
+#game-board .game-card .card-back{
+    backface-visibility: hidden; /* Hides the back side when flipping */
+}
+
+/* Flip Effect */
+#game-board .game-card.flipped {
+    transform: rotateY(180deg); /* Flip the entire card */
+}
+
+/* Prevent matched cards from being clicked */
+.game-card.matched {
+    border: 5px solid green;
+    pointer-events: none;  /* Prevent further clicks */
+    cursor: default;
 }
 
 @keyframes dealCards {
