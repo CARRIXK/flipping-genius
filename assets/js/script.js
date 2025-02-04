@@ -1,46 +1,46 @@
 const cards = {
-    animals: [
-        {
-            id: 1,
-            url: "assets/images/ant.png",
-        },
-        {
-            id: 2,
-            url: "assets/images/cat.png",
-        },
-        {
-            id: 3,
-            url: "assets/images/cowpng.png",
-        },
-    ],
-    fruits: [
-        {
-            id: 1,
-            url: "assets/images/apple.png",
-        },
-        {
-            id: 2,
-            url: "assets/images/banana.png",
-        },
-        {
-            id: 3,
-            url: "assets/images/cherry.png",
-        },
-    ],
-    clours: [
-        {
-            id: 1,
-            url: "assets/images/brown.jpeg",
-        },
-        {
-            id: 2,
-            url: "assets/images/black.jpeg",
-        },
-        {
-            id: 3,
-            url: "assets/images/white.jpeg",
-        },
-    ],
+  animals: [
+    {
+      id: 1,
+      url: "assets/images/ant.png",
+    },
+    {
+      id: 2,
+      url: "assets/images/cat.png",
+    },
+    {
+      id: 3,
+      url: "assets/images/cowpng.png",
+    },
+  ],
+  fruits: [
+    {
+      id: 1,
+      url: "assets/images/apple.png",
+    },
+    {
+      id: 2,
+      url: "assets/images/banana.png",
+    },
+    {
+      id: 3,
+      url: "assets/images/cherry.png",
+    },
+  ],
+  colours: [
+    {
+      id: 1,
+      url: "assets/images/brown.jpeg",
+    },
+    {
+      id: 2,
+      url: "assets/images/black.jpeg",
+    },
+    {
+      id: 3,
+      url: "assets/images/white.jpeg",
+    },
+  ],
 };
 
 let gameRows = 4;
@@ -143,13 +143,11 @@ function createBoard(rows, cols, category) {
     }
 }
 
-
-
 /**
  * Handles the logic for flipping a card in a card matching game.
- * 
+ *
  * @param {Event} e - The event object triggered by clicking a card.
- * 
+ *
  * The function performs the following steps:
  * 1. Retrieves the clicked card and currently flipped cards.
  * 2. Prevents flipping more than two cards at a time.
@@ -162,17 +160,17 @@ function flipCard(e) {
 
     let card = e.currentTarget;
 
-    //Currently flipped cards
-    let flippedCards = document.querySelectorAll(".flipped");
+  //Currently flipped cards
+  let flippedCards = document.querySelectorAll(".flipped");
 
     //Prevent flipping more than two cards
     if (flippedCards.length >= 2) return;
 
-    // Flip the clicked card
-    card.classList.add("flipped");
+  // Flip the clicked card
+  card.classList.add("flipped");
 
-    // Update flipped cards after flipping the new one
-    flippedCards = document.querySelectorAll(".flipped");
+  // Update flipped cards after flipping the new one
+  flippedCards = document.querySelectorAll(".flipped");
 
     //Only check when two cards are flipped
     if (flippedCards.length === 2) {
@@ -216,3 +214,4 @@ populateCategoryDropdown();
 
 // Create the initial board
 createBoard(gameRows, gameCols, selectedCategory);
+ 
