@@ -27,7 +27,7 @@ const cards = {
       url: "assets/images/cherry.png",
     },
   ],
-  clours: [
+  colours: [
     {
       id: 1,
       url: "assets/images/brown.jpeg",
@@ -143,13 +143,11 @@ function createBoard(rows, cols, category) {
   }
 }
 
-
-
 /**
  * Handles the logic for flipping a card in a card matching game.
- * 
+ *
  * @param {Event} e - The event object triggered by clicking a card.
- * 
+ *
  * The function performs the following steps:
  * 1. Retrieves the clicked card and currently flipped cards.
  * 2. Prevents flipping more than two cards at a time.
@@ -159,49 +157,49 @@ function createBoard(rows, cols, category) {
  *    - If they do not match, flips the cards back after a delay.
  */
 function flipCard(e) {
-    // Flip card logic here
-    let card = e.currentTarget;
+  // Flip card logic here
+  let card = e.currentTarget;
 
-    //Currently flipped cards
-    let flippedCards = document.querySelectorAll(".flipped");
+  //Currently flipped cards
+  let flippedCards = document.querySelectorAll(".flipped");
 
-    // console.log("Number of flipped cards" , flippedCards.length)
-    //Prevent flipping more than two cards
-    if(flippedCards.length >= 2) return;
+  // console.log("Number of flipped cards" , flippedCards.length)
+  //Prevent flipping more than two cards
+  if (flippedCards.length >= 2) return;
 
-    // Flip the clicked card
-    card.classList.add("flipped");
+  // Flip the clicked card
+  card.classList.add("flipped");
 
-    // Update flipped cards after flipping the new one
-    flippedCards = document.querySelectorAll(".flipped");
+  // Update flipped cards after flipping the new one
+  flippedCards = document.querySelectorAll(".flipped");
 
-    //Only check when two cards are flipped
-    if(flippedCards.length === 2){
+  //Only check when two cards are flipped
+  if (flippedCards.length === 2) {
+    let firstCard = flippedCards[0];
+    let secondCard = flippedCards[1];
 
-        let firstCard = flippedCards[0];
-        let secondCard = flippedCards[1];
-        
-        if(firstCard.dataset.id === secondCard.dataset.id){
-            console.log("There is a match");
-            //increase the match count
-            increaseMatchCount();
-            //for each of the flipped cards add the matched class
-            setTimeout(() => {
-                flippedCards.forEach(card => card.classList.replace("flipped", "matched")); 
-            }, 800 ); 
+    if (firstCard.dataset.id === secondCard.dataset.id) {
+      console.log("There is a match");
+      //increase the match count
+      increaseMatchCount();
+      //for each of the flipped cards add the matched class
+      setTimeout(() => {
+        flippedCards.forEach((card) =>
+          card.classList.replace("flipped", "matched")
+        );
+      }, 800);
+    } else {
+      console.log("No match");
+      //wait 0.8 seconds then remove the flipped class from each card
+      setTimeout(() => {
+        flippedCards.forEach((card) => card.classList.toggle("flipped"));
+      }, 800);
 
-        }else{
-            console.log("No match");
-            //wait 0.8 seconds then remove the flipped class from each card
-            setTimeout(() => {
-                flippedCards.forEach(card => card.classList.toggle("flipped"));
-            }, 800 ); 
-
-            console.log("cards class list", card.classList);
-        }
-    }else{
-        console.log(`Only ${flippedCards.length} card has been flipped`);
+      console.log("cards class list", card.classList);
     }
+  } else {
+    console.log(`Only ${flippedCards.length} card has been flipped`);
+  }
 
   //     if(firstCard.firstChild.textContent === secondCard.firstChild.textContent){
   //         console.log("There is a match");
@@ -212,9 +210,9 @@ function flipCard(e) {
   // }
 }
 
-function increaseMatchCount(){
-    let newCount  = parseInt(document.getElementById("matchCount").innerText) + 1;
-    document.getElementById("matchCount").innerText = newCount;
+function increaseMatchCount() {
+  let newCount = parseInt(document.getElementById("matchCount").innerText) + 1;
+  document.getElementById("matchCount").innerText = newCount;
 }
 
 // Populate the category dropdown on page load
