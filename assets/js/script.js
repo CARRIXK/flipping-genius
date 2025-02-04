@@ -79,15 +79,6 @@ document
     createBoard(gameRows, gameCols, selectedCategory);
   });
 
-document.getElementById('game-controls-viewer').addEventListener('click', () => {
-    const gameControls = document.getElementById('game-controls');
-    if (gameControls.style.height === '0px' || gameControls.style.height === '') {
-        gameControls.style.height = `${gameControls.scrollHeight + 17}px`;
-    } else {
-        gameControls.style.height = '0px';
-    }
-});
-
 function populateCategoryDropdown() {
   const categoryDropdown = document.getElementById("category-setting");
   categoryDropdown.innerHTML = ""; // Clear existing options
@@ -128,7 +119,6 @@ function createBoard(rows, cols, category) {
     for (let col = 0; col < cols; col++) {
       const card = document.createElement("div");
       card.className = "game-card";
-      card.style.transform = "translateY(100vh) rotateX(90deg)";
       card.dataset.id = cardValues[cardIndex].id;
 
       const cardFront = document.createElement("div");
@@ -142,24 +132,15 @@ function createBoard(rows, cols, category) {
       card.appendChild(cardBack);
       card.addEventListener("click", flipCard);
 
+      // Add a delay to the animation for each card
+      card.style.animationDelay = `${cardIndex * 0.1}s`;
+
       rowElement.appendChild(card);
       cardIndex++;
     }
 
     board.appendChild(rowElement);
   }
-
-  // Add the deal class to each card one at a time
-  const unDealtCards = board.querySelectorAll(".game-card");
-  unDealtCards.forEach((card, index) => {
-      setTimeout(() => {
-          card.classList.add("deal");
-          card.addEventListener("animationend", () => {
-            card.style.transform = "";
-            card.classList.remove("deal");
-          });
-      }, index * 100); // Adjust the delay as needed
-  });
 }
 
 /**
