@@ -48,6 +48,7 @@ header,
     transform-style: preserve-3d;
     /* Allows child elements to rotate properly */
     transition: transform 0.6s ease-in-out;
+    border-radius: 10px;
 }
 
 .game-card.deal {
@@ -169,6 +170,10 @@ header,
 @media all and (max-width: 450px) {
     header {
         flex-direction: column;
+    }
+
+    header img {
+        width: 100px;
     }
 
     #game-timer {

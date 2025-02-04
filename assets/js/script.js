@@ -45,7 +45,10 @@ const cards = {
 
 let gameRows = 4;
 let gameCols = 4;
-let selectedCategory = "animals";
+let selectedCategory = Object.keys(cards)[0];
+let timerInterval;
+let startTime;
+let isTimerRunning = false;
 
 document.getElementById("start-game").addEventListener("click", () => {
     createBoard(gameRows, gameCols, selectedCategory);
@@ -72,12 +75,19 @@ document
         createBoard(gameRows, gameCols, selectedCategory);
     });
 
-document
-    .getElementById("category-setting")
-    .addEventListener("change", (event) => {
-        selectedCategory = event.target.value;
-        createBoard(gameRows, gameCols, selectedCategory);
-    });
+document.getElementById("category-setting").addEventListener("change", (event) => {
+  selectedCategory = event.target.value;
+  createBoard(gameRows, gameCols, selectedCategory);
+});
+
+document.getElementById('game-controls-viewer').addEventListener('click', () => {
+  const gameControls = document.getElementById('game-controls');
+  if (gameControls.style.height === '0px' || gameControls.style.height === '') {
+    gameControls.style.height = `${gameControls.scrollHeight + 17}px`;
+  } else {
+    gameControls.style.height = '0px';
+  }
+});
 
 function populateCategoryDropdown() {
     const categoryDropdown = document.getElementById("category-setting");
@@ -92,10 +102,14 @@ function populateCategoryDropdown() {
 }
 
 function createBoard(rows, cols, category) {
-    // Get the game-board section
-    const board = document.getElementById("game-board");
-    // Clear any existing content
-    board.innerHTML = "";
+  // Get the game-board section
+  const board = document.getElementById("game-board");
+  // Clear any existing content
+  board.innerHTML = "";
+  // reset the match count
+  document.getElementById("matchCount").innerText = 0;
+  // Reset the timer
+  resetTimer();
 
     // Create an array of card values with pairs
     const cardValues = [];
@@ -103,44 +117,54 @@ function createBoard(rows, cols, category) {
     const categoryCards = cards[category];
     const uniqueCards = categoryCards.length;
 
-    for (let i = 0; i < totalCards / 2; i++) {
-        cardValues.push(categoryCards[i % uniqueCards]);
-        cardValues.push(categoryCards[i % uniqueCards]);
+  for (let i = 0; i < totalCards / 2; i++) {
+    cardValues.push(categoryCards[i % uniqueCards]);
+    cardValues.push(categoryCards[i % uniqueCards]);
+  }
+
+  // Shuffle the card values
+  cardValues.sort(() => 0.5 - Math.random());
+
+  let cardIndex = 0;
+  for (let row = 0; row < rows; row++) {
+    const rowElement = document.createElement("div");
+    rowElement.className = "game-row";
+
+    for (let col = 0; col < cols; col++) {
+      const card = document.createElement("div");
+      card.className = "game-card";
+      card.style.transform = "translateY(100vh) rotateX(90deg)";
+      card.dataset.id = cardValues[cardIndex].id;
+
+      const cardFront = document.createElement("div");
+      cardFront.className = "card-front";
+      cardFront.style.backgroundImage = `url(${cardValues[cardIndex].url})`;
+
+      const cardBack = document.createElement("div");
+      cardBack.className = "card-back";
+
+      card.appendChild(cardFront);
+      card.appendChild(cardBack);
+      card.addEventListener("click", flipCard);
+
+      rowElement.appendChild(card);
+      cardIndex++;
     }
 
-    // Shuffle the card values
-    cardValues.sort(() => 0.5 - Math.random());
+    board.appendChild(rowElement);
+  }
 
-    let cardIndex = 0;
-    for (let row = 0; row < rows; row++) {
-        const rowElement = document.createElement("div");
-        rowElement.className = "game-row";
-
-        for (let col = 0; col < cols; col++) {
-            const card = document.createElement("div");
-            card.className = "game-card";
-            card.dataset.id = cardValues[cardIndex].id;
-
-            const cardFront = document.createElement("div");
-            cardFront.className = "card-front";
-            cardFront.style.backgroundImage = `url(${cardValues[cardIndex].url})`;
-
-            const cardBack = document.createElement("div");
-            cardBack.className = "card-back";
-
-            card.appendChild(cardFront);
-            card.appendChild(cardBack);
-            card.addEventListener("click", flipCard);
-
-            // Add a delay to the animation for each card
-            card.style.animationDelay = `${cardIndex * 0.1}s`;
-
-            rowElement.appendChild(card);
-            cardIndex++;
-        }
-
-        board.appendChild(rowElement);
-    }
+  // Add the deal class to each card one at a time
+  const unDealtCards = board.querySelectorAll(".game-card");
+  unDealtCards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.add("deal");
+      card.addEventListener("animationend", () => {
+        card.style.transform = "";
+        card.classList.remove("deal");
+      });
+    }, index * 100); // Adjust the delay as needed
+  });
 }
 
 /**
@@ -159,6 +183,11 @@ function createBoard(rows, cols, category) {
 function flipCard(e) {
 
     let card = e.currentTarget;
+
+  // Start the timer if it's not already running
+  if (!isTimerRunning) {
+      startTimer();
+  }
 
   //Currently flipped cards
   let flippedCards = document.querySelectorAll(".flipped");
@@ -209,9 +238,33 @@ function increaseMatchCount() {
     document.getElementById("matchCount").innerText = newCount;
 }
 
+function startTimer() {
+  startTime = Date.now();
+  timerInterval = setInterval(updateTimer, 1000);
+  isTimerRunning = true;
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+  isTimerRunning = false;
+}
+
+function resetTimer() {
+  stopTimer();
+  document.querySelector("#game-timer span").textContent = "00:00";
+}
+
+function updateTimer() {
+  const elapsedTime = Date.now() - startTime;
+  const seconds = Math.floor((elapsedTime / 1000) % 60);
+  const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+
+  document.querySelector("#game-timer span").textContent =
+    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
 // Populate the category dropdown on page load
 populateCategoryDropdown();
 
 // Create the initial board
 createBoard(gameRows, gameCols, selectedCategory);
- 
