@@ -84,15 +84,13 @@ header,
 
 #game-board .game-card .card-front {
     display: flex;
-    /* Enables Flexbox */
     font-size: 2em;
     align-items: center;
-    /* Centers content vertically */
     justify-content: center;
-    /* Centers content horizontally */
     background-color: #FFFFFF;
-    background-size: cover;
-    transform: rotateY(180deg); /* Initially hidden */
+    background-size: 112%;
+    transform: rotateY(180deg);
+    background-position: center;
 }
 
 #game-controls-viewer {
