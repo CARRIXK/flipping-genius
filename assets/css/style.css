@@ -44,8 +44,8 @@ header,
     perspective: 1000px; /* Enables 3D effect */
     transform-style: preserve-3d; /* Allows child elements to rotate properly */
     transition: transform 0.6s ease-in-out;
-    animation: dealCards 0.5s ease-in-out forwards;
-    transform: translateY(100vh) rotateX(90deg); /* Initially off-screen */
+    /* animation: dealCards 0.5s ease-in-out forwards;  */
+    /* transform: translateY(100vh) rotateX(90deg); /* Initially off-screen */
 }
 
 #game-board .game-card.removing {
@@ -96,13 +96,10 @@ header,
 
 /* Prevent matched cards from being clicked */
 .game-card.matched {
-    border: 5px solid green;
     pointer-events: none;  /* Prevent further clicks */
     cursor: default;
+    opacity: 0;
 }
-
-
-
 
 
 @keyframes dealCards {
