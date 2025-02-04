@@ -204,13 +204,15 @@ function flipCard(e) {
     //Only check when two cards are flipped
     if (flippedCards.length === 2) {
 
+        increaseCount("attemptCount");
+
         let firstCard = flippedCards[0];
         let secondCard = flippedCards[1];
 
         if (firstCard.dataset.id === secondCard.dataset.id) {
             console.log("There is a match");
             //increase the match count
-            increaseMatchCount();
+            increaseCount("matchCount");
             //for each of the flipped cards add the matched class
             setTimeout(() => {
                 flippedCards.forEach(card => {
@@ -233,9 +235,9 @@ function flipCard(e) {
     }
 }
 
-function increaseMatchCount() {
-    let newCount = parseInt(document.getElementById("matchCount").innerText) + 1;
-    document.getElementById("matchCount").innerText = newCount;
+function increaseCount(elementId){
+    let newCount = parseInt(document.getElementById(elementId).innerText) + 1;
+    document.getElementById(elementId).innerText = newCount;
 }
 
 function startTimer() {
