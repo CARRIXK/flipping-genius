@@ -36,13 +36,15 @@
             </div>
             <img src="assets/images/flipping-genius.webp" alt="Flipping Genius Logo"
                 class="img-fluid mx-auto d-block mb-1" width="150" height="150">
-            <div id="game-matches">
-                <i class="fa-solid fa-clone"></i>
-                Matches = <span id="matchCount">0</span>
-            </div>
-            <div id="attempts">
-                <i class="fa-solid fa-bullseye"></i>
-                Attempts = <span id="attemptCount">0</span>
+            <div class="game-counts">
+                <div id="game-matches">
+                    <i class="fa-solid fa-clone"></i>
+                    Matches = <span id="matchCount">0</span>
+                </div>
+                <div id="attempts">
+                    <i class="fa-solid fa-bullseye"></i>
+                    Attempts = <span id="attemptCount">0</span>
+                </div>
             </div>
         </header>
         <section id="game-board-outer" class="mb-3">
@@ -67,13 +69,15 @@
                 <i class="fa-solid fa-trophy"></i>
                 High Scores
             </button>
-            <button type="button" class="btn btn-info mx-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#instructionsModal">
+            <button type="button" class="btn btn-info mx-2 text-nowrap" data-bs-toggle="modal"
+                data-bs-target="#instructionsModal">
                 <i class="fa-solid fa-circle-question"></i>
             </button>
         </section>
 
         <!-- Instructions Modal -->
-        <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+        <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -108,12 +112,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- High scores content goes here -->
                         <ul id="high-scores-list" class="list-group">
-                            <!-- Example high scores -->
-                            <li class="list-group-item">Player 1: 1000</li>
-                            <li class="list-group-item">Player 2: 900</li>
-                            <li class="list-group-item">Player 3: 800</li>
+                            <!-- High scores will be populated here -->
                         </ul>
                     </div>
                     <div class="modal-footer">
@@ -124,7 +124,8 @@
         </div>
 
         <!-- Congratulations Modal -->
-        <div class="modal fade" id="congratsModal" tabindex="-1" aria-labelledby="congratsModalLabel" aria-hidden="true">
+        <div class="modal fade" id="congratsModal" tabindex="-1" aria-labelledby="congratsModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
