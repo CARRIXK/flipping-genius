@@ -171,6 +171,10 @@ header,
         flex-direction: column;
     }
 
+    header img {
+        width: 100px;
+    }
+
     #game-timer {
         order: 1;
         margin: 5px 0;

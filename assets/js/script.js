@@ -45,7 +45,7 @@ const cards = {
 
 let gameRows = 4;
 let gameCols = 4;
-let selectedCategory = "animals";
+let selectedCategory = Object.keys(cards)[0];
 
 document.getElementById("start-game").addEventListener("click", () => {
   createBoard(gameRows, gameCols, selectedCategory);
