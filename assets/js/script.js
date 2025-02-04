@@ -233,7 +233,6 @@ function flipCard(e) {
                     card.classList.replace("flipped", "matched");
                     card.removeChild(card.lastChild);
                     console.log(card);
-
                 });
             }, 800);
 

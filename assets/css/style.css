@@ -115,17 +115,21 @@ header,
     backface-visibility: hidden; /* Hides the back side when flipping */
 }
 
+
 /* Flip Effect */
 #game-board .game-card.flipped {
     transform: rotateY(180deg); /* Flip the entire card */
 }
 
-/* Prevent matched cards from being clicked */
-.game-card.matched {
-    pointer-events: none;  /* Prevent further clicks */
+/* Flip Effect */
+#game-board .game-card.matched {
+    transform: rotateY(180deg); /* Flip the entire card */
+    pointer-events: none;  /* /* Prevent cards from being clicked */
     cursor: default;
-    opacity: 0;
+    outline: 5px solid green;
 }
+
+
 
 @keyframes dealCards {
     from {
