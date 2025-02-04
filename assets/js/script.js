@@ -133,9 +133,11 @@ function createBoard(rows, cols, category) {
  */
 function flipCard(e) {
     // Flip card logic here
-    // console.log(e.currentTarget);
+    console.log(e.currentTarget);
     let card = e.currentTarget;
     card.classList.toggle('flipped');
+    console.log(card);
+
 
     //when a card is flipped check if there is another card flipped
     let flippedCards = document.querySelectorAll(".flipped");
