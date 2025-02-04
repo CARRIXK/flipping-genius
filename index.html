@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flipping Genius!</title>
+    <meta name="description" content="Flipping Genius! is a memory matching game that challenges players to find matching pairs of cards.">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
@@ -58,19 +59,19 @@
                 <i class="fa-solid fa-play"></i>
                 Start Game
             </button>
-            <select id="difficulty-setting" class="form-select mx-2">
+            <select id="difficulty-setting" class="form-select mx-2" aria-label="Select Difficulty">
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
             </select>
-            <select id="category-setting" class="form-select mx-2"></select>
+            <select id="category-setting" class="form-select mx-2" aria-label="Select Category"></select>
             <button type="button" class="btn btn-secondary mx-2 text-nowrap" data-bs-toggle="modal"
                 data-bs-target="#highScoresModal">
                 <i class="fa-solid fa-trophy"></i>
                 High Scores
             </button>
             <button type="button" class="btn btn-info mx-2 text-nowrap" data-bs-toggle="modal"
-                data-bs-target="#instructionsModal">
+                data-bs-target="#instructionsModal" aria-label="Instructions">
                 <i class="fa-solid fa-circle-question"></i>
             </button>
         </section>
