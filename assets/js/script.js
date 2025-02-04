@@ -282,9 +282,9 @@ function saveScore(difficulty, time, attempts) {
       notifyNewHighScore();
     } else {
 
-      const existingHighScoreMessage = congratsModalBody.querySelector('.high_score');
+      const existingHighScoreMessage = document.querySelector('.high_score');
       if (existingHighScoreMessage) {
-        congratsModalBody.removeChild(existingHighScoreMessage);
+        document.removeChild(existingHighScoreMessage);
       }
     }
   } else {
