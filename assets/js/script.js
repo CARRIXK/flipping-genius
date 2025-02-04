@@ -46,6 +46,9 @@ const cards = {
 let gameRows = 4;
 let gameCols = 4;
 let selectedCategory = Object.keys(cards)[0];
+let timerInterval;
+let startTime;
+let isTimerRunning = false;
 
 document.getElementById("start-game").addEventListener("click", () => {
   createBoard(gameRows, gameCols, selectedCategory);
@@ -103,6 +106,10 @@ function createBoard(rows, cols, category) {
   const board = document.getElementById("game-board");
   // Clear any existing content
   board.innerHTML = "";
+  // reset the match count
+  document.getElementById("matchCount").innerText = 0;
+  // Reset the timer
+  resetTimer();
 
   // Create an array of card values with pairs
   const cardValues = [];
@@ -177,6 +184,11 @@ function flipCard(e) {
   // Flip card logic here
   let card = e.currentTarget;
 
+  // Start the timer if it's not already running
+  if (!isTimerRunning) {
+      startTimer();
+  }
+
   //Currently flipped cards
   let flippedCards = document.querySelectorAll(".flipped");
 
@@ -231,6 +243,31 @@ function flipCard(e) {
 function increaseMatchCount() {
   let newCount = parseInt(document.getElementById("matchCount").innerText) + 1;
   document.getElementById("matchCount").innerText = newCount;
+}
+
+function startTimer() {
+  startTime = Date.now();
+  timerInterval = setInterval(updateTimer, 1000);
+  isTimerRunning = true;
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+  isTimerRunning = false;
+}
+
+function resetTimer() {
+  stopTimer();
+  document.querySelector("#game-timer span").textContent = "00:00";
+}
+
+function updateTimer() {
+  const elapsedTime = Date.now() - startTime;
+  const seconds = Math.floor((elapsedTime / 1000) % 60);
+  const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+
+  document.querySelector("#game-timer span").textContent =
+    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
 // Populate the category dropdown on page load
