@@ -291,6 +291,8 @@ function saveScore(difficulty, time, attempts) {
     localStorage.setItem(difficulty, JSON.stringify(currentScore));
     notifyNewHighScore();
   }
+  
+  populateHighScores()
 
   // Set expiration for 3 months
   const expirationDate = new Date();
