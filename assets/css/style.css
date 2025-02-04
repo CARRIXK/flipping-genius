@@ -40,6 +40,9 @@ header,
     flex: 0 1 100%;
     aspect-ratio: 3 / 4;
     position: relative;
+    perspective: 1000px; /* Enables 3D effect */
+    transform-style: preserve-3d; /* Allows child elements to rotate properly */
+    transition: transform 0.6s ease-in-out;
 }
 
 #game-board .game-card>div {
@@ -48,7 +51,7 @@ header,
     border: 1px solid black;
     border-radius: 10px;
     position: absolute;
-    transition: transform 0.8s;
+    
 }
 
 #game-board .game-card .card-back {
@@ -64,6 +67,10 @@ header,
 }
 
 #game-board .game-card .card-front {
+    display: flex;            /* Enables Flexbox */
+    font-size: 2em;
+    align-items: center;      /* Centers content vertically */
+    justify-content: center;  /* Centers content horizontally */
     background-color: #FFFFFF;
     background-size: cover;
 }

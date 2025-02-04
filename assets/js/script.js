@@ -124,8 +124,29 @@ function createBoard(rows, cols, category) {
     }
 }
 
-function flipCard() {
+function flipCard(e) {
     // Flip card logic here
+    // console.log(e.currentTarget);
+    let card = e.currentTarget;
+    card.classList.toggle('flipped');
+
+    //when a card is flipped check if there is another card flipped
+    let flippedCards = document.querySelectorAll(".flipped");
+    // if(flippedCards.length > 1){
+
+    //     let firstCard = flippedCards[0];
+    //     let secondCard = flippedCards[1];
+        
+    //     if(firstCard.firstChild.textContent === secondCard.firstChild.textContent){
+    //         console.log("There is a match");
+        
+              
+    //     }else{
+    //         console.log("No match");
+    //     }
+    // }
+
 }
+
 
 createBoard(gameRows, gameCols, selectedCategory);
