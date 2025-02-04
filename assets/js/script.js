@@ -75,6 +75,18 @@ document.getElementById('category-setting').addEventListener('change', (event) =
     createBoard(gameRows, gameCols, selectedCategory);
 });
 
+function populateCategoryDropdown() {
+    const categoryDropdown = document.getElementById('category-setting');
+    categoryDropdown.innerHTML = ''; // Clear existing options
+
+    Object.keys(cards).forEach(category => {
+        const option = document.createElement('option');
+        option.value = category;
+        option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+        categoryDropdown.appendChild(option);
+    });
+}
+
 function createBoard(rows, cols, category) {
     // Get the game-board section
     const board = document.getElementById('game-board');
@@ -148,5 +160,8 @@ function flipCard(e) {
 
 }
 
+// Populate the category dropdown on page load
+populateCategoryDropdown();
 
+// Create the initial board
 createBoard(gameRows, gameCols, selectedCategory);
