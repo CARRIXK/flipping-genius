@@ -104,67 +104,81 @@ function populateCategoryDropdown() {
 function createBoard(rows, cols, category) {
   // Get the game-board section
   const board = document.getElementById("game-board");
-  // Clear any existing content
-  board.innerHTML = "";
+
   // reset the match count
   document.getElementById("matchCount").innerText = 0;
   // Reset the timer
   resetTimer();
 
-  // Create an array of card values with pairs
-  const cardValues = [];
-  const totalCards = rows * cols;
-  const categoryCards = cards[category];
-  const uniqueCards = categoryCards.length;
+  // Apply remove animation to existing cards
+  const existingCards = board.querySelectorAll(".game-card");
+  existingCards.forEach((card, index) => {
+    card.style.transform = 'translateY(0) rotateX(0)'; // Set initial state
+    card.style.zIndex = 1; // Ensure the card is above the new cards
+    card.classList.add("removing");
+    card.style.animationDelay = `${index * 0.1}s`;
+  });
 
-  for (let i = 0; i < totalCards / 2; i++) {
-    cardValues.push(categoryCards[i % uniqueCards]);
-    cardValues.push(categoryCards[i % uniqueCards]);
-  }
+  // Wait for the remove animation to finish before clearing the board and adding new cards
+  setTimeout(() => {
+    // Clear any existing content
+    board.innerHTML = "";
 
-  // Shuffle the card values
-  cardValues.sort(() => 0.5 - Math.random());
+    // Create an array of card values with pairs
+    const cardValues = [];
+    const totalCards = rows * cols;
+    const categoryCards = cards[category];
+    const uniqueCards = categoryCards.length;
 
-  let cardIndex = 0;
-  for (let row = 0; row < rows; row++) {
-    const rowElement = document.createElement("div");
-    rowElement.className = "game-row";
-
-    for (let col = 0; col < cols; col++) {
-      const card = document.createElement("div");
-      card.className = "game-card";
-      card.style.transform = "translateY(100vh) rotateX(90deg)";
-      card.dataset.id = cardValues[cardIndex].id;
-
-      const cardFront = document.createElement("div");
-      cardFront.className = "card-front";
-      cardFront.style.backgroundImage = `url(${cardValues[cardIndex].url})`;
-
-      const cardBack = document.createElement("div");
-      cardBack.className = "card-back";
-
-      card.appendChild(cardFront);
-      card.appendChild(cardBack);
-      card.addEventListener("click", flipCard);
-
-      rowElement.appendChild(card);
-      cardIndex++;
+    for (let i = 0; i < totalCards / 2; i++) {
+      cardValues.push(categoryCards[i % uniqueCards]);
+      cardValues.push(categoryCards[i % uniqueCards]);
     }
 
-    board.appendChild(rowElement);
-  }
+    // Shuffle the card values
+    cardValues.sort(() => 0.5 - Math.random());
 
-  // Add the deal class to each card one at a time
-  const unDealtCards = board.querySelectorAll(".game-card");
-  unDealtCards.forEach((card, index) => {
-    setTimeout(() => {
-      card.classList.add("deal");
-      card.addEventListener("animationend", () => {
-        card.style.transform = "";
-        card.classList.remove("deal");
-      });
-    }, index * 100); // Adjust the delay as needed
-  });
+    let cardIndex = 0;
+    for (let row = 0; row < rows; row++) {
+      const rowElement = document.createElement("div");
+      rowElement.className = "game-row";
+
+      for (let col = 0; col < cols; col++) {
+        const card = document.createElement("div");
+        card.className = "game-card";
+        card.style.transform = "translateY(100vh) rotateX(90deg)";
+        card.dataset.id = cardValues[cardIndex].id;
+
+        const cardFront = document.createElement("div");
+        cardFront.className = "card-front";
+        cardFront.style.backgroundImage = `url(${cardValues[cardIndex].url})`;
+
+        const cardBack = document.createElement("div");
+        cardBack.className = "card-back";
+
+        card.appendChild(cardFront);
+        card.appendChild(cardBack);
+        card.addEventListener("click", flipCard);
+
+        rowElement.appendChild(card);
+        cardIndex++;
+      }
+
+      board.appendChild(rowElement);
+    }
+
+    // Add the deal class to each card one at a time
+    const unDealtCards = board.querySelectorAll(".game-card");
+    unDealtCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add("deal");
+        card.addEventListener("animationend", () => {
+          card.style.transform = "";
+          card.classList.remove("deal");
+        });
+      }, index * 100); // Adjust the delay as needed
+    });
+  }, existingCards.length * 100); // Adjust the timeout based on the number of existing cards
 }
 
 /**
@@ -186,7 +200,7 @@ function flipCard(e) {
 
   // Start the timer if it's not already running
   if (!isTimerRunning) {
-      startTimer();
+    startTimer();
   }
 
   //Currently flipped cards
@@ -243,6 +257,19 @@ function flipCard(e) {
 function increaseMatchCount() {
   let newCount = parseInt(document.getElementById("matchCount").innerText) + 1;
   document.getElementById("matchCount").innerText = newCount;
+
+  // Check if all cards have been matched
+  if (newCount === (gameRows * gameCols) / 2) {
+    completeGame();
+  }
+}
+
+function completeGame() {
+  stopTimer();
+  // Show the congratulations modal
+  const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
+  document.getElementById('final-time').textContent = document.querySelector("#game-timer span").textContent;
+  congratsModal.show();
 }
 
 function startTimer() {
