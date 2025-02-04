@@ -249,16 +249,6 @@ function flipCard(e) {
     }
 }
 
-function increaseMatchCount() {
-  let newCount = parseInt(document.getElementById("matchCount").innerText) + 1;
-  document.getElementById("matchCount").innerText = newCount;
-
-  // Check if all cards have been matched
-  if (newCount === (gameRows * gameCols) / 2) {
-    completeGame();
-  }
-}
-
 function completeGame() {
   stopTimer();
   // Show the congratulations modal
@@ -270,6 +260,11 @@ function completeGame() {
 function increaseCount(elementId){
     let newCount = parseInt(document.getElementById(elementId).innerText) + 1;
     document.getElementById(elementId).innerText = newCount;
+
+    // Check if all cards have been matched
+    if (elementId == 'matchCount' && newCount === (gameRows * gameCols) / 2) {
+      completeGame();
+    }
 }
 
 function startTimer() {
