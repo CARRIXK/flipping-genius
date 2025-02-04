@@ -72,12 +72,19 @@ document
     createBoard(gameRows, gameCols, selectedCategory);
   });
 
-document
-  .getElementById("category-setting")
-  .addEventListener("change", (event) => {
-    selectedCategory = event.target.value;
-    createBoard(gameRows, gameCols, selectedCategory);
-  });
+document.getElementById("category-setting").addEventListener("change", (event) => {
+  selectedCategory = event.target.value;
+  createBoard(gameRows, gameCols, selectedCategory);
+});
+
+document.getElementById('game-controls-viewer').addEventListener('click', () => {
+    const gameControls = document.getElementById('game-controls');
+    if (gameControls.style.height === '0px' || gameControls.style.height === '') {
+        gameControls.style.height = `${gameControls.scrollHeight + 17}px`;
+    } else {
+        gameControls.style.height = '0px';
+    }
+});
 
 function populateCategoryDropdown() {
   const categoryDropdown = document.getElementById("category-setting");
@@ -119,6 +126,7 @@ function createBoard(rows, cols, category) {
     for (let col = 0; col < cols; col++) {
       const card = document.createElement("div");
       card.className = "game-card";
+      card.style.transform = "translateY(100vh) rotateX(90deg)";
       card.dataset.id = cardValues[cardIndex].id;
 
       const cardFront = document.createElement("div");
@@ -132,15 +140,24 @@ function createBoard(rows, cols, category) {
       card.appendChild(cardBack);
       card.addEventListener("click", flipCard);
 
-      // Add a delay to the animation for each card
-      card.style.animationDelay = `${cardIndex * 0.1}s`;
-
       rowElement.appendChild(card);
       cardIndex++;
     }
 
     board.appendChild(rowElement);
   }
+
+  // Add the deal class to each card one at a time
+  const unDealtCards = board.querySelectorAll(".game-card");
+  unDealtCards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.add("deal");
+      card.addEventListener("animationend", () => {
+        card.style.transform = "";
+        card.classList.remove("deal");
+      });
+    }, index * 100); // Adjust the delay as needed
+  });
 }
 
 /**
@@ -175,6 +192,7 @@ function flipCard(e) {
 
   //Only check when two cards are flipped
   if (flippedCards.length === 2) {
+
     let firstCard = flippedCards[0];
     let secondCard = flippedCards[1];
 
@@ -184,15 +202,14 @@ function flipCard(e) {
       increaseMatchCount();
       //for each of the flipped cards add the matched class
       setTimeout(() => {
-        flippedCards.forEach((card) =>
-          card.classList.replace("flipped", "matched")
-        );
+        flippedCards.forEach(card => card.classList.replace("flipped", "matched"));
       }, 800);
+
     } else {
       console.log("No match");
       //wait 0.8 seconds then remove the flipped class from each card
       setTimeout(() => {
-        flippedCards.forEach((card) => card.classList.toggle("flipped"));
+        flippedCards.forEach(card => card.classList.toggle("flipped"));
       }, 800);
 
       console.log("cards class list", card.classList);
@@ -200,14 +217,17 @@ function flipCard(e) {
   } else {
     console.log(`Only ${flippedCards.length} card has been flipped`);
   }
+} else {
+  console.log(`Only ${flippedCards.length} card has been flipped`);
+}
 
-  //     if(firstCard.firstChild.textContent === secondCard.firstChild.textContent){
-  //         console.log("There is a match");
+    //     if(firstCard.firstChild.textContent === secondCard.firstChild.textContent){
+    //         console.log("There is a match");
 
-  //     }else{
-  //         console.log("No match");
-  //     }
-  // }
+    //     }else{
+    //         console.log("No match");
+    //     }
+    // }
 }
 
 function increaseMatchCount() {
