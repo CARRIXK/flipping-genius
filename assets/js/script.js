@@ -1,34 +1,46 @@
 const cards = {
-    animals: {
-        1: '🐶',
-        2: '🐱',
-        3: '🐭',
-        4: '🐹',
-        5: '🐰',
-        6: '🦊',
-        7: '🐻',
-        8: '🐼',
-    },
-    fruits: {
-        1: '🍎',
-        2: '🍌',
-        3: '🍇',
-        4: '🍉',
-        5: '🍓',
-        6: '🍒',
-        7: '🍑',
-        8: '🍍',
-    },
-    vehicles: {
-        1: '🚗',
-        2: '🚕',
-        3: '🚙',
-        4: '🚌',
-        5: '🚎',
-        6: '🏎️',
-        7: '🚓',
-        8: '🚑',
-    }
+    animals: [
+        {
+            id: 1,
+            url: 'assets/images/ant.png',
+        },
+        {
+            id: 2,
+            url: 'assets/images/cat.png',
+        },
+        {
+            id: 3,
+            url: 'assets/images/cowpng.png',
+        },
+    ],
+    fruits: [
+        {
+            id: 1,
+            url: 'assets/images/apple.png',
+        },
+        {
+            id: 2,
+            url: 'assets/images/banana.png',
+        },
+        {
+            id: 3,
+            url: 'assets/images/cherry.png',
+        },
+    ],
+    vehicles: [
+        {
+            id: 1,
+            url: 'assets/images/car.png',
+        },
+        {
+            id: 2,
+            url: 'assets/images/bus.png',
+        },
+        {
+            id: 3,
+            url: 'assets/images/bike.png',
+        },
+    ]
 };
 
 let gameRows = 4;
@@ -73,11 +85,11 @@ function createBoard(rows, cols, category) {
     const cardValues = [];
     const totalCards = rows * cols;
     const categoryCards = cards[category];
-    const uniqueCards = Object.keys(categoryCards).length;
+    const uniqueCards = categoryCards.length;
 
-    for (let i = 1; i <= totalCards / 2; i++) {
-        cardValues.push(categoryCards[(i - 1) % uniqueCards + 1]);
-        cardValues.push(categoryCards[(i - 1) % uniqueCards + 1]);
+    for (let i = 0; i < totalCards / 2; i++) {
+        cardValues.push(categoryCards[i % uniqueCards]);
+        cardValues.push(categoryCards[i % uniqueCards]);
     }
 
     // Shuffle the card values
@@ -91,10 +103,11 @@ function createBoard(rows, cols, category) {
         for (let col = 0; col < cols; col++) {
             const card = document.createElement('div');
             card.className = 'game-card';
+            card.dataset.id = cardValues[cardIndex].id;
 
             const cardFront = document.createElement('div');
             cardFront.className = 'card-front';
-            cardFront.innerText = cardValues[cardIndex++]; // Assign a random card value
+            cardFront.style.backgroundImage = `url(${cardValues[cardIndex].url})`;
 
             const cardBack = document.createElement('div');
             cardBack.className = 'card-back';
@@ -104,6 +117,7 @@ function createBoard(rows, cols, category) {
             card.addEventListener('click', flipCard);
 
             rowElement.appendChild(card);
+            cardIndex++;
         }
 
         board.appendChild(rowElement);
