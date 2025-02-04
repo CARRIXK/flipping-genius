@@ -128,6 +128,9 @@ function createBoard(rows, cols, category) {
             card.appendChild(cardBack);
             card.addEventListener('click', flipCard);
 
+            // Add a delay to the animation for each card
+            card.style.animationDelay = `${cardIndex * 0.1}s`;
+
             rowElement.appendChild(card);
             cardIndex++;
         }
