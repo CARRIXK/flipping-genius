@@ -87,8 +87,14 @@ header,
     transform: rotateY(180deg); /* Flip the entire card */
 }
 
-.matched {
-    border: solid 1px green;
+/* Prevent matched cards from being clicked */
+.game-card.matched {
+    border: 5px solid green;
+    pointer-events: none;  /* Prevent further clicks */
+    cursor: default;
 }
+
+
+
 
 
