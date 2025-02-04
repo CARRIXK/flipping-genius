@@ -77,6 +77,15 @@ document.getElementById("category-setting").addEventListener("change", (event) =
   createBoard(gameRows, gameCols, selectedCategory);
 });
 
+document.getElementById('game-controls-viewer').addEventListener('click', () => {
+    const gameControls = document.getElementById('game-controls');
+    if (gameControls.style.height === '0px' || gameControls.style.height === '') {
+        gameControls.style.height = `${gameControls.scrollHeight + 17}px`;
+    } else {
+        gameControls.style.height = '0px';
+    }
+});
+
 function populateCategoryDropdown() {
   const categoryDropdown = document.getElementById("category-setting");
   categoryDropdown.innerHTML = ""; // Clear existing options
