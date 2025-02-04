@@ -121,9 +121,9 @@ header,
 
 /* Prevent matched cards from being clicked */
 .game-card.matched {
-    border: 5px solid green;
     pointer-events: none;  /* Prevent further clicks */
     cursor: default;
+    opacity: 0;
 }
 
 @keyframes dealCards {

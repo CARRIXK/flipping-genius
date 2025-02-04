@@ -51,29 +51,29 @@ let startTime;
 let isTimerRunning = false;
 
 document.getElementById("start-game").addEventListener("click", () => {
-  createBoard(gameRows, gameCols, selectedCategory);
+    createBoard(gameRows, gameCols, selectedCategory);
 });
 
 document
-  .getElementById("difficulty-setting")
-  .addEventListener("change", (event) => {
-    const difficulty = event.target.value;
-    switch (difficulty) {
-      case "easy":
-        gameRows = 4;
-        gameCols = 4;
-        break;
-      case "medium":
-        gameRows = 6;
-        gameCols = 6;
-        break;
-      case "hard":
-        gameRows = 8;
-        gameCols = 8;
-        break;
-    }
-    createBoard(gameRows, gameCols, selectedCategory);
-  });
+    .getElementById("difficulty-setting")
+    .addEventListener("change", (event) => {
+        const difficulty = event.target.value;
+        switch (difficulty) {
+            case "easy":
+                gameRows = 4;
+                gameCols = 4;
+                break;
+            case "medium":
+                gameRows = 6;
+                gameCols = 6;
+                break;
+            case "hard":
+                gameRows = 8;
+                gameCols = 8;
+                break;
+        }
+        createBoard(gameRows, gameCols, selectedCategory);
+    });
 
 document.getElementById("category-setting").addEventListener("change", (event) => {
   selectedCategory = event.target.value;
@@ -90,15 +90,15 @@ document.getElementById('game-controls-viewer').addEventListener('click', () => 
 });
 
 function populateCategoryDropdown() {
-  const categoryDropdown = document.getElementById("category-setting");
-  categoryDropdown.innerHTML = ""; // Clear existing options
+    const categoryDropdown = document.getElementById("category-setting");
+    categoryDropdown.innerHTML = ""; // Clear existing options
 
-  Object.keys(cards).forEach((category) => {
-    const option = document.createElement("option");
-    option.value = category;
-    option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
-    categoryDropdown.appendChild(option);
-  });
+    Object.keys(cards).forEach((category) => {
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+        categoryDropdown.appendChild(option);
+    });
 }
 
 function createBoard(rows, cols, category) {
@@ -111,11 +111,11 @@ function createBoard(rows, cols, category) {
   // Reset the timer
   resetTimer();
 
-  // Create an array of card values with pairs
-  const cardValues = [];
-  const totalCards = rows * cols;
-  const categoryCards = cards[category];
-  const uniqueCards = categoryCards.length;
+    // Create an array of card values with pairs
+    const cardValues = [];
+    const totalCards = rows * cols;
+    const categoryCards = cards[category];
+    const uniqueCards = categoryCards.length;
 
   for (let i = 0; i < totalCards / 2; i++) {
     cardValues.push(categoryCards[i % uniqueCards]);
@@ -181,8 +181,8 @@ function createBoard(rows, cols, category) {
  *    - If they do not match, flips the cards back after a delay.
  */
 function flipCard(e) {
-  // Flip card logic here
-  let card = e.currentTarget;
+
+    let card = e.currentTarget;
 
   // Start the timer if it's not already running
   if (!isTimerRunning) {
@@ -192,9 +192,8 @@ function flipCard(e) {
   //Currently flipped cards
   let flippedCards = document.querySelectorAll(".flipped");
 
-  // console.log("Number of flipped cards" , flippedCards.length)
-  //Prevent flipping more than two cards
-  if (flippedCards.length >= 2) return;
+    //Prevent flipping more than two cards
+    if (flippedCards.length >= 2) return;
 
   // Flip the clicked card
   card.classList.add("flipped");
@@ -202,47 +201,43 @@ function flipCard(e) {
   // Update flipped cards after flipping the new one
   flippedCards = document.querySelectorAll(".flipped");
 
-  //Only check when two cards are flipped
-  if (flippedCards.length === 2) {
+    //Only check when two cards are flipped
+    if (flippedCards.length === 2) {
 
-    let firstCard = flippedCards[0];
-    let secondCard = flippedCards[1];
+        increaseCount("attemptCount");
 
-    if (firstCard.dataset.id === secondCard.dataset.id) {
-      console.log("There is a match");
-      //increase the match count
-      increaseMatchCount();
-      //for each of the flipped cards add the matched class
-      setTimeout(() => {
-        flippedCards.forEach(card => card.classList.replace("flipped", "matched"));
-      }, 800);
+        let firstCard = flippedCards[0];
+        let secondCard = flippedCards[1];
 
+        if (firstCard.dataset.id === secondCard.dataset.id) {
+            console.log("There is a match");
+            //increase the match count
+            increaseCount("matchCount");
+            //for each of the flipped cards add the matched class
+            setTimeout(() => {
+                flippedCards.forEach(card => {
+                    card.classList.replace("flipped", "matched");
+                    card.removeChild(card.lastChild);
+                    console.log(card);
+
+                });
+            }, 800);
+
+        } else {
+            console.log("No match");
+            //wait 0.8 seconds then remove the flipped class from each card
+            setTimeout(() => {
+                flippedCards.forEach(card => card.classList.toggle("flipped"));
+            }, 800);
+        }
     } else {
-      console.log("No match");
-      //wait 0.8 seconds then remove the flipped class from each card
-      setTimeout(() => {
-        flippedCards.forEach(card => card.classList.toggle("flipped"));
-      }, 800);
-
-      console.log("cards class list", card.classList);
+        console.log(`Only ${flippedCards.length} card has been flipped`);
     }
-  } else {
-    console.log(`Only ${flippedCards.length} card has been flipped`);
-  }
-
-  //}
-  //     if(firstCard.firstChild.textContent === secondCard.firstChild.textContent){
-  //         console.log("There is a match");
-
-  //     }else{
-  //         console.log("No match");
-  //     }
-  // }
 }
 
-function increaseMatchCount() {
-  let newCount = parseInt(document.getElementById("matchCount").innerText) + 1;
-  document.getElementById("matchCount").innerText = newCount;
+function increaseCount(elementId){
+    let newCount = parseInt(document.getElementById(elementId).innerText) + 1;
+    document.getElementById(elementId).innerText = newCount;
 }
 
 function startTimer() {
