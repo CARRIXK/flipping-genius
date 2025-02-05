@@ -281,6 +281,7 @@ function createBoard(rows, cols, category) {
   setTimeout(() => {
     // Clear any existing content
     board.innerHTML = "";
+    playShuffleSound();
 
     // Create an array of card values with pairs
     const cardValues = [];
@@ -295,6 +296,7 @@ function createBoard(rows, cols, category) {
 
     // Shuffle the card values
     cardValues.sort(() => 0.5 - Math.random());
+  
 
     let cardIndex = 0;
     for (let row = 0; row < rows; row++) {
@@ -323,6 +325,7 @@ function createBoard(rows, cols, category) {
       }
 
       board.appendChild(rowElement);
+      
     }
 
     // Add the deal class to each card one at a time
@@ -372,6 +375,7 @@ function flipCard(e) {
 
   // Flip the clicked card
   card.classList.add("flipped");
+  playFlipSound();
 
   // Update flipped cards after flipping the new one
   flippedCards = document.querySelectorAll(".flipped");
@@ -410,6 +414,8 @@ function flipCard(e) {
   }
 }
 
+
+
 function completeGame() {
   stopTimer();
   const finalTime = document.querySelector("#game-timer span").textContent;
@@ -418,14 +424,15 @@ function completeGame() {
 
   playwinSound();
 
-  // Save the score to localStorage
-  saveScore(difficulty, finalTime, attempts);
+    // Save the score to localStorage
+    saveScore(difficulty, finalTime, attempts);
 
-  // Show the congratulations modal
-  const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
-  document.getElementById('final-time').textContent = finalTime;
-  congratsModal.show();
+    // Show the congratulations modal
+    const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
+    document.getElementById('final-time').textContent = finalTime;
+    congratsModal.show();
 }
+
 
 function saveScore(difficulty, time, attempts) {
   const currentScore = { time, attempts, date: Date.now() };
@@ -496,6 +503,7 @@ function increaseCount(elementId) {
   document.getElementById(elementId).innerText = newCount;
 
   // Check if all cards have been matched
+
   if (elementId == 'matchCount' && newCount === (gameRows * gameCols) / 2) {
     completeGame();
   }
