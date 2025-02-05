@@ -503,15 +503,9 @@ function completeGame() {
   const attempts = parseInt(document.getElementById("attemptCount").innerText);
   const difficulty = document.getElementById("difficulty-setting").value;
 
-
-    // matchedCards = document.querySelectorAll(".matched");
-    // matchedCards.forEach(card => {
-    //   console.log("Card before", card);
-    //   card.classList.remove("matched");
-    //   console.log("Matched removed", card);
-    //   card.classList.add("matched");
-    //   console.log("Match added", card);
-    // });
+  
+  // Call this function when you want to restart the match effect
+  restartMatchAnimation();
 
   playGameEndSound();
   //wait until end game sound plays before congratulations screen
@@ -529,6 +523,24 @@ function completeGame() {
 
 
 }
+
+function restartMatchAnimation() {
+
+  //wait for last matched card animation to run
+  setTimeout(() => {
+    let matchedCards = document.querySelectorAll(".matched");
+    matchedCards.forEach(card => {
+        console.log(card);
+        card.classList.remove("matched"); // Remove the class
+        void card.offsetWidth; // Force a reflow to restart animation
+        card.classList.add("matched"); // Re-add the class
+    });
+  }, 800);
+}
+
+
+
+
 
 function saveScore(difficulty, time, attempts) {
   const currentScore = { time, attempts, date: Date.now() };
