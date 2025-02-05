@@ -173,7 +173,6 @@ const cards = {
 
 // audio files
 const ShuffleSound = new Audio('assets/sounds/cardshuffle.mp3');
-const flipSound = new Audio('assets/sounds/flipcard.mp3');
 const matchSound = new Audio('assets/sounds/matchcard.mp3');
 const winSound = new Audio('assets/sounds/levelwin.mp3');
 const gameOverSound = new Audio('assets/sounds/gameover.mp3');
@@ -269,13 +268,15 @@ function createBoard(rows, cols, category) {
     card.style.transform = 'translateY(0) rotateX(0)'; // Set initial state
     card.style.zIndex = 1; // Ensure the card is above the new cards
     card.classList.add("removing");
-    // Play flip sound
-    //playFlipSound(0.1);
     card.style.animationDelay = `${index * 0.1}s`;
   });
 
-  // Play shuffle sound with adjusted duration
-  //playShuffleSound(((existingCards.length == 0 ? 16 : existingCards.length) * 100) / 1000);
+  // Play flip sound for each existing card with a delay
+  existingCards.forEach((card, index) => {
+    setTimeout(() => {
+      playFlipSound();
+    }, index * 90); // 0.09 seconds delay
+  });
 
   // Wait for the remove animation to finish before clearing the board and adding new cards
   setTimeout(() => {
@@ -296,7 +297,7 @@ function createBoard(rows, cols, category) {
 
     // Shuffle the card values
     cardValues.sort(() => 0.5 - Math.random());
-  
+
 
     let cardIndex = 0;
     for (let row = 0; row < rows; row++) {
@@ -325,7 +326,7 @@ function createBoard(rows, cols, category) {
       }
 
       board.appendChild(rowElement);
-      
+
     }
 
     // Add the deal class to each card one at a time
@@ -336,6 +337,7 @@ function createBoard(rows, cols, category) {
         card.addEventListener("animationend", () => {
           card.style.transform = "";
           card.classList.remove("deal");
+          playFlipSound();
         });
       }, index * 100); // Adjust the delay as needed
     });
@@ -375,7 +377,6 @@ function flipCard(e) {
 
   // Flip the clicked card
   card.classList.add("flipped");
-  playFlipSound();
 
   // Update flipped cards after flipping the new one
   flippedCards = document.querySelectorAll(".flipped");
@@ -414,8 +415,6 @@ function flipCard(e) {
   }
 }
 
-
-
 function completeGame() {
   stopTimer();
   const finalTime = document.querySelector("#game-timer span").textContent;
@@ -424,15 +423,14 @@ function completeGame() {
 
   playwinSound();
 
-    // Save the score to localStorage
-    saveScore(difficulty, finalTime, attempts);
+  // Save the score to localStorage
+  saveScore(difficulty, finalTime, attempts);
 
-    // Show the congratulations modal
-    const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
-    document.getElementById('final-time').textContent = finalTime;
-    congratsModal.show();
+  // Show the congratulations modal
+  const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
+  document.getElementById('final-time').textContent = finalTime;
+  congratsModal.show();
 }
-
 
 function saveScore(difficulty, time, attempts) {
   const currentScore = { time, attempts, date: Date.now() };
@@ -549,9 +547,9 @@ function playShuffleSound(duration) {
   ShuffleSound.play();
 }
 
-function playFlipSound(duration = 1) {
+function playFlipSound() {
   if (isMuted) return;
-  flipSound.playbackRate = flipSound.duration / duration;
+  const flipSound = new Audio('assets/sounds/flipcard.mp3');
   flipSound.play();
 }
 
