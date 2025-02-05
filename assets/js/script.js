@@ -502,7 +502,7 @@ function completeGame() {
   stopTimer();
   const finalTime = document.querySelector("#game-timer span").textContent;
   const attempts = parseInt(document.getElementById("attemptCount").innerText);
-  const accuracy = document.getElementById("accuracyVal").innerText;
+  const accuracy = calculateAccuracy().toString();
   const difficulty = document.getElementById("difficulty-setting").value;
   
   // Call this function when you want to restart the match effect
@@ -519,7 +519,8 @@ function completeGame() {
     // Show the congratulations modal
     const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
     document.getElementById('final-time').textContent = finalTime;
-    document.getElementById('accuracy').textContent = accuracy;
+    document.getElementById('final-attempts').textContent = attempts;
+    document.getElementById('final-accuracy').textContent = accuracy;
     congratsModal.show();
   }, 3000);
 
@@ -531,7 +532,7 @@ function calculateAccuracy(){
     const attempts = parseInt(document.getElementById("attemptCount").innerText);
 
     if(matchCount && attempts){
-      accuracy = Math.round((matchCount / attempts) * 100) / 100;
+      accuracy = ((matchCount / attempts) * 100).toFixed(2);
       return accuracy;
     }
 }
