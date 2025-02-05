@@ -281,7 +281,7 @@ function createBoard(rows, cols, category) {
   setTimeout(() => {
     // Clear any existing content
     board.innerHTML = "";
-    playShuffleSound();
+    //playShuffleSound();
 
     // Create an array of card values with pairs
     const cardValues = [];
