@@ -337,7 +337,7 @@ function createBoard(rows, cols, category) {
         card.addEventListener("animationend", () => {
           card.style.transform = "";
           card.classList.remove("deal");
-          playFlipSound();
+          // playFlipSound();
         });
       }, index * 100); // Adjust the delay as needed
     });
