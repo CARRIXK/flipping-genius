@@ -3,6 +3,11 @@ const cards = {
     1: "assets/images/lion.png",
     2: "assets/images/panda.png",
     3: "assets/images/tiger.png",
+    4: "assets/images/zebra.png",
+    5: "assets/images/elephant.png",
+    6: "assets/images/monkey.png",
+    7: "assets/images/giraffe.png",
+    8: "assets/images/hippo.png",
   },
   fruits: {
     1: "assets/images/apple.png",
