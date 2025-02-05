@@ -404,9 +404,10 @@ function flipCard(e) {
           card.classList.replace("flipped", "matched");
           //card.removeChild(card.lastChild);
           console.log(card);
-          playMatchSound();
         });
+        playMatchSound();
       }, 800);
+
 
     } else {
       console.log("No match");
@@ -426,15 +427,21 @@ function completeGame() {
   const attempts = parseInt(document.getElementById("attemptCount").innerText);
   const difficulty = document.getElementById("difficulty-setting").value;
 
-  playwinSound();
+  playGameEndSound();
+    //wait until end game sound plays before congratulations screen
+  setTimeout(() => {
+    playCongratsSound();
 
-  // Save the score to localStorage
-  saveScore(difficulty, finalTime, attempts);
+    // Save the score to localStorage
+    saveScore(difficulty, finalTime, attempts);
+  
+    // Show the congratulations modal
+    const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
+    document.getElementById('final-time').textContent = finalTime;
+    congratsModal.show();
+}, 3000);
+  
 
-  // Show the congratulations modal
-  const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
-  document.getElementById('final-time').textContent = finalTime;
-  congratsModal.show();
 }
 
 function saveScore(difficulty, time, attempts) {
@@ -563,12 +570,12 @@ function playMatchSound() {
   matchSound.play();
 }
 
-function playwinSound() {
+function playCongratsSound() {
   if (isMuted) return;
   winSound.play();
 }
 
-function playGameOverSound() {
+function playGameEndSound() {
   if (isMuted) return;
   gameOverSound.play();
 }
