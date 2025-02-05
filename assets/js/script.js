@@ -613,6 +613,10 @@ document.addEventListener('DOMContentLoaded', () => {
   populateCategoryDropdown();
   // Check for any previous high scores and populate the leaderboard
   populateHighScores();
+
+  // Preload the flip sound
+  preloadedFlipSound = new Audio('assets/sounds/flipcard.mp3');
+  preloadedFlipSound.load();
 });
 
 function playShuffleSound(duration) {
