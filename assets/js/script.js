@@ -185,8 +185,77 @@ let startTime;
 let isTimerRunning = false;
 let isMuted = false;
 
+document.getElementById("start-game-start").addEventListener("click", () => {
+  // Get the selected difficulty and category
+  const difficulty = document.getElementById("difficulty-setting-start").value;
+
+  // Set the gameRows and gameCols based on the selected difficulty
+  switch (difficulty) {
+      case "easy":
+          gameRows = 4;
+          gameCols = 4;
+          break;
+      case "medium":
+          gameRows = 6;
+          gameCols = 6;
+          break;
+      case "hard":
+          gameRows = 8;
+          gameCols = 8;
+          break;
+  }
+
+  // Create the game board
+  createBoard(gameRows, gameCols, selectedCategory);
+
+  // Animate the hiding of the start-page element
+  const startPage = document.getElementById("start-page");
+  startPage.style.transition = "opacity 2s ease-out";
+  startPage.style.opacity = 0;
+  setTimeout(() => {
+      startPage.style.display = "none";
+  }, 2000); // Match the duration of the transition
+});
+
 document.getElementById("start-game").addEventListener("click", () => {
   createBoard(gameRows, gameCols, selectedCategory);
+});
+
+document.getElementById("difficulty-setting-start").addEventListener("change", (event) => {
+  const difficulty = event.target.value;
+  document.getElementById("difficulty-setting").value = difficulty;
+});
+
+document.getElementById("category-setting-start").addEventListener("change", (event) => {
+  selectedCategory = event.target.value;
+  document.getElementById("category-setting").value = selectedCategory;
+});
+
+document.getElementById('volume-control-start').addEventListener('click', () => {
+  isMuted = !isMuted;
+  const volumeControlButtonStart = document.getElementById('volume-control-start');
+  const volumeHighIconStart = volumeControlButtonStart.querySelector('.fa-volume-high');
+  const volumeXmarkIconStart = volumeControlButtonStart.querySelector('.fa-volume-xmark');
+
+  if (isMuted) {
+    volumeHighIconStart.style.display = 'none';
+    volumeXmarkIconStart.style.display = 'inline';
+  } else {
+    volumeHighIconStart.style.display = 'inline';
+    volumeXmarkIconStart.style.display = 'none';
+  }
+
+  const volumeControlButton = document.getElementById('volume-control');
+  const volumeHighIcon = volumeControlButton.querySelector('.fa-volume-high');
+  const volumeXmarkIcon = volumeControlButton.querySelector('.fa-volume-xmark');
+
+  if (isMuted) {
+    volumeHighIcon.style.display = 'none';
+    volumeXmarkIcon.style.display = 'inline';
+  } else {
+    volumeHighIcon.style.display = 'inline';
+    volumeXmarkIcon.style.display = 'none';
+  }
 });
 
 document
@@ -240,10 +309,17 @@ document.getElementById('volume-control').addEventListener('click', () => {
 });
 
 function populateCategoryDropdown() {
+  const categoryDropdownStart = document.getElementById("category-setting-start");
   const categoryDropdown = document.getElementById("category-setting");
+  categoryDropdownStart.innerHTML = ""; // Clear existing options
   categoryDropdown.innerHTML = ""; // Clear existing options
 
   Object.keys(cards).forEach((category) => {
+    const optionStart = document.createElement("option");
+    optionStart.value = category;
+    optionStart.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+    categoryDropdownStart.appendChild(optionStart);
+
     const option = document.createElement("option");
     option.value = category;
     option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
@@ -547,10 +623,12 @@ function updateTimer() {
 document.addEventListener('DOMContentLoaded', () => {
   // Populate the category dropdown on page load
   populateCategoryDropdown();
-  // Create the initial board
-  createBoard(gameRows, gameCols, selectedCategory);
   // Check for any previous high scores and populate the leaderboard
   populateHighScores();
+
+  // Preload the flip sound
+  preloadedFlipSound = new Audio('assets/sounds/flipcard.mp3');
+  preloadedFlipSound.load();
 });
 
 function playShuffleSound(duration) {
