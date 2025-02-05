@@ -152,17 +152,18 @@ header,
     /* Needed for ::before */
 }
 
-
-.game-card.celebrate::before {
+#game-board .game-card.matched::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.7), transparent);
+    animation: cardMatchEffect 1s ease-out forwards;
     border-radius: inherit;
-    animation: celebrate 1s ease-in-out infinite; /* Looping animation */
-  }
+}
+
   
 
 @keyframes cardMatchEffect {
@@ -178,6 +179,7 @@ header,
         transform: scale(1);
     }
 }
+
 
 
 
