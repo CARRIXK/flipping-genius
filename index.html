@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flipping Genius!</title>
+    <meta name="description" content="Flipping Genius! is a memory matching game that challenges players to find matching pairs of cards.">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
@@ -32,13 +33,19 @@
         <header class="text-center text-light d-flex justify-content-between align-items-center mx-auto">
             <div id="game-timer">
                 <i class="fa-solid fa-hourglass"></i>
-                time = <span>00:00:00</span>
+                time = <span>00:00</span>
             </div>
             <img src="assets/images/flipping-genius.webp" alt="Flipping Genius Logo"
                 class="img-fluid mx-auto d-block mb-1" width="150" height="150">
-            <div id="game-matches">
-                <i class="fa-solid fa-clone"></i>
-                Matches = <span id="matchCount">0</span>
+            <div class="game-counts">
+                <div id="game-matches">
+                    <i class="fa-solid fa-clone"></i>
+                    Matches = <span id="matchCount">0</span>
+                </div>
+                <div id="attempts">
+                    <i class="fa-solid fa-bullseye"></i>
+                    Attempts = <span id="attemptCount">0</span>
+                </div>
             </div>
         </header>
         <section id="game-board-outer" class="mb-3">
@@ -52,72 +59,90 @@
                 <i class="fa-solid fa-play"></i>
                 Start Game
             </button>
-            <select id="difficulty-setting" class="form-select mx-2">
+            <select id="difficulty-setting" class="form-select mx-2" aria-label="Select Difficulty">
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="hard">Hard</option>
             </select>
-            <select id="category-setting" class="form-select mx-2"></select>
+            <select id="category-setting" class="form-select mx-2" aria-label="Select Category"></select>
             <button type="button" class="btn btn-secondary mx-2 text-nowrap" data-bs-toggle="modal"
                 data-bs-target="#highScoresModal">
                 <i class="fa-solid fa-trophy"></i>
                 High Scores
             </button>
-            <button type="button" class="btn btn-info mx-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#instructionsModal">
+            <button type="button" class="btn btn-info mx-2 text-nowrap" data-bs-toggle="modal"
+                data-bs-target="#instructionsModal" aria-label="Instructions">
                 <i class="fa-solid fa-circle-question"></i>
             </button>
-
-            <!-- Instructions Modal -->
-            <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="instructionsModalLabel">How to Play</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Welcome to Flipping Genius! Here are the instructions to play the game:</p>
-                            <ol>
-                                <li>Select a difficulty level and category from the dropdown menus.</li>
-                                <li>Click the "Start Game" button to begin.</li>
-                                <li>Flip the cards to find matching pairs.</li>
-                                <li>Match all pairs as quickly as possible to achieve a high score.</li>
-                                <li>Your time and matches will be displayed at the top of the screen.</li>
-                            </ol>
-                            <p>Good luck and have fun!</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- High Scores Modal -->
-            <div class="modal fade" id="highScoresModal" tabindex="-1" aria-labelledby="highScoresModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="highScoresModalLabel">High Scores</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- High scores content goes here -->
-                            <ul id="high-scores-list" class="list-group">
-                                <!-- Example high scores -->
-                                <li class="list-group-item">Player 1: 1000</li>
-                                <li class="list-group-item">Player 2: 900</li>
-                                <li class="list-group-item">Player 3: 800</li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
+
+        <!-- Instructions Modal -->
+        <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="instructionsModalLabel">How to Play</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Welcome to Flipping Genius! Here are the instructions to play the game:</p>
+                        <ol>
+                            <li>Select a difficulty level and category from the dropdown menus.</li>
+                            <li>Click the "Start Game" button to begin.</li>
+                            <li>Flip the cards to find matching pairs.</li>
+                            <li>Match all pairs as quickly as possible to achieve a high score.</li>
+                            <li>Your time and matches will be displayed at the top of the screen.</li>
+                        </ol>
+                        <p>Good luck and have fun!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- High Scores Modal -->
+        <div class="modal fade" id="highScoresModal" tabindex="-1" aria-labelledby="highScoresModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="highScoresModalLabel">High Scores</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="high-scores-list" class="list-group">
+                            <!-- High scores will be populated here -->
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Congratulations Modal -->
+        <div class="modal fade" id="congratsModal" tabindex="-1" aria-labelledby="congratsModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="congratsModalLabel">Congratulations!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Congratulations on finishing the game!</p>
+                        <p>Your time: <span id="final-time"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 
