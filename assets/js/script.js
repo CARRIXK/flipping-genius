@@ -2,83 +2,83 @@ const cards = {
   animals: [
     {
       id: 1,
-      url: "assets/images/ant.png",
+      url: "assets/images/ant.webp",
     },
     {
       id: 2,
-      url: "assets/images/cat.png",
+      url: "assets/images/cat.webp",
     },
     {
       id: 3,
-      url: "assets/images/dog.png",
+      url: "assets/images/dog.webp",
     },
     {
       id: 4,
-      url: "assets/images/mouse.png",
+      url: "assets/images/mouse.webp",
     },
     {
       id: 5,
-      url: "assets/images/dog.png",
+      url: "assets/images/rabbit.webp",
     },
     {
       id: 6,
-      url: "assets/images/fox.png",
+      url: "assets/images/cow.webp",
     },
     {
       id: 7,
-      url: "assets/images/rabbit.png",
+      url: "assets/images/elephant.webp",
     },
     {
       id: 8,
-      url: "assets/images/cowpng.png",
+      url: "assets/images/horse.webp",
     },
   ],
   fruits: [
     {
       id: 1,
-      url: "assets/images/apple.png",
+      url: "assets/images/apple.webp",
     },
     {
       id: 2,
-      url: "assets/images/banana.png",
+      url: "assets/images/banana.webp",
     },
     {
       id: 3,
-      url: "assets/images/grapes.png",
+      url: "assets/images/grapes.webp",
     },
     {
       id: 4,
-      url: "assets/images/lemon.png",
+      url: "assets/images/lemon.webp",
     },
     {
       id: 5,
-      url: "assets/images/orange.png",
+      url: "assets/images/orange.webp",
     },
     {
       id: 6,
-      url: "assets/images/peach.png",
+      url: "assets/images/peach.webp",
     },
     {
       id: 7,
-      url: "assets/images/pear.png",
+      url: "assets/images/pear.webp",
     },
     {
       id: 8,
-      url: "assets/images/strawberry.png",
+      url: "assets/images/strawberry.webp",
     },
   ],
   colours: [
     {
       id: 1,
-      url: "assets/images/blue.png",
+      url: "assets/images/blue.webp",
     },
     {
       id: 2,
-      url: "assets/images/green.png",
+      url: "assets/images/green.webp",
     },
     {
       id: 3,
-      url: "assets/images/orange.png",
+      url: "assets/images/orange.webp",
     },
   ],
 };
@@ -426,4 +426,45 @@ document.addEventListener("DOMContentLoaded", () => {
   createBoard(gameRows, gameCols, selectedCategory);
   // Check for any previous high scores and populate the leaderboard
   populateHighScores();
+});
+
+// audio files
+const ShuffleSound = new Audio("assets/sounds/cardshuffle.mp3");
+const flipSound = new Audio("assets/sounds/flipcard.mp3");
+const matchSound = new Audio("assets/sounds/matchcard.mp3");
+const winSound = new Audio("assets/sounds/levelwin.mp3");
+const gameOverSound = new Audio("assets/sounds/gameover.mp3");
+
+function playShuffleSound() {
+  ShuffleSound.play();
+}
+function playFlipSound() {
+  flipSound.play();
+}
+
+function playMatchSound() {
+  matchSound.play();
+}
+
+function playwinSound() {
+  winSound.play();
+}
+
+function playGameOverSound() {
+  gameOverSound.play();
+}
+
+// Get the audio element and the button
+const audio = document.getElementById("myAudio");
+const muteButton = document.getElementById("muteButton");
+
+// Add an event listener to the button
+muteButton.addEventListener("click", function () {
+  if (audio.muted) {
+    audio.muted = false;
+    muteButton.textContent = "Mute";
+  } else {
+    audio.muted = true;
+    muteButton.textContent = "Unmute";
+  }
 });
