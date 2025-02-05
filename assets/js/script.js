@@ -505,3 +505,45 @@ document.addEventListener('DOMContentLoaded', () => {
   // Check for any previous high scores and populate the leaderboard
   populateHighScores();
 });
+
+// audio files
+const ShuffleSound = new Audio('assets/sounds/cardshuffle.mp3');
+const flipSound = new Audio('assets/sounds/flipcard.mp3');
+const matchSound = new Audio('assets/sounds/matchcard.mp3');
+const winSound = new Audio('assets/sounds/levelwin.mp3');
+const gameOverSound = new Audio('assets/sounds/gameover.mp3');
+
+function playShuffleSound() {    
+    ShuffleSound.play();
+}
+function playFlipSound() {
+  flipSound.play();
+}
+
+function playMatchSound() {
+  matchSound.play();
+}
+
+function playwinSound() {
+    winSound.play();
+}
+
+function playGameOverSound() {
+    gameOverSound.play();
+}
+
+
+// Get the audio element and the button
+const audio = document.getElementById('myAudio');
+const muteButton = document.getElementById('muteButton');
+
+// Add an event listener to the button
+muteButton.addEventListener('click', function() {
+    if (audio.muted) {
+        audio.muted = false;
+        muteButton.textContent = 'Mute';
+    } else {
+        audio.muted = true;
+        muteButton.textContent = 'Unmute';
+    }
+});
