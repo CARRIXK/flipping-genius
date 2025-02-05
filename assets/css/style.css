@@ -176,7 +176,7 @@ header,
     }
 }
 
-@media all and (max-width: 760px) {
+@media all and ((max-width: 760px) or (max-height: 1180px)) {
     #game-controls {
         flex-wrap: wrap;
     }
@@ -192,6 +192,8 @@ header,
         width: calc(100% - 19px);
         height: 0;
         transition: height 0.3s;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
