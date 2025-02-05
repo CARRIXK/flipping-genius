@@ -36,71 +36,51 @@ const cards = {
   fruits: [
     {
       id: 1,
-      url: "assets/images/apple.jpeg",
+      url: "assets/images/apple.png",
     },
     {
       id: 2,
-      url: "assets/images/banana.jpeg",
+      url: "assets/images/banana.png",
     },
     {
       id: 3,
-      url: "assets/images/avocado..jpe
+      url: "assets/images/grapes.png",
     },
     {
       id: 4,
-      url: "assets/images/grapes.jpeg",
+      url: "assets/images/lemon.png",
     },
     {
       id: 5,
-      url: "assets/images/lemon.jpeg",
+      url: "assets/images/orange.png",
     },
     {
       id: 6,
-      url: "assets/images/orange.jpeg",
+      url: "assets/images/peach.png",
     },
     {
       id: 7,
-      url: "assets/images/peach.jpeg",
+      url: "assets/images/pear.png",
     },
     {
       id: 8,
-      url: "assets/images/pear.jpeg",
+      url: "assets/images/strawberry.png",
     },
   ],
   colours: [
     {
       id: 1,
-      url: "assets/images/brown.jpeg",
+      url: "assets/images/blue.png",
     },
     {
       id: 2,
-      url: "assets/images/black.jpeg",
+      url: "assets/images/green.png",
     },
     {
       id: 3,
-      url: "assets/images/white.jpeg",
+      url: "assets/images/orange.png",
     },
   ],
-  {
-      id: 4,
-      url: "assets/images/blue.jpeg",
-    },
-  {
-      id: 5,
-      url: "assets/images/orange.jpeg",
-    },
-  {
-      id: 6,
-      url: "assets/images/purple.jpeg",
-    },
-  {
-      id: 7,
-      url: "assets/images/yellow.jpeg",
-    },
-  {
-      id: 8,
-      url: "assets/images/red.jpeg",
-    },
 };
 
 let gameRows = 4;
