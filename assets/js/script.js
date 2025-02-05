@@ -36,141 +36,137 @@ const cards = {
   fruits: [
     {
       id: 1,
-      url: "assets/images/apple.jpeg",
+      url: "assets/images/fruit/apple.webp",
     },
     {
       id: 2,
-      url: "assets/images/banana.jpeg",
+      url: "assets/images/fruit/banana.webp",
     },
     {
       id: 3,
-      url: "assets/images/grapes.jpeg",
+      url: "assets/images/fruit/grapes.webp",
     },
     {
       id: 4,
-      url: "assets/images/lemon.jpeg",
+      url: "assets/images/fruit/lemon.webp",
     },
     {
       id: 5,
-      url: "assets/images/orange.jpeg",
+      url: "assets/images/fruit/peach.webp",
     },
     {
       id: 6,
-      url: "assets/images/peach.jpeg",
+      url: "assets/images/fruit/pear.webp",
     },
     {
       id: 7,
-      url: "assets/images/pear.jpeg",
+      url: "assets/images/fruit/strawberry.webp",
     },
     {
       id: 8,
-      url: "assets/images/strawberry.jpeg",
+      url: "assets/images/fruit/avacado.webp",
     },
     {
       id: 9,
-      url: "assets/images/avacado.jpeg",
+      url: "assets/images/fruit/cherry.webp",
     },
     {
       id: 10,
-      url: "assets/images/cherry.jpeg",
+      url: "assets/images/fruit/coconut.webp",
     },
     {
       id: 11,
-      url: "assets/images/coconut.jpeg",
+      url: "assets/images/fruit/grapefruit.webp",
     },
     {
       id: 12,
-      url: "assets/images/grapefruit.jpeg",
+      url: "assets/images/fruit/kiwi.webp",
     },
     {
       id: 13,
-      url: "assets/images/kiwi.jpeg",
+      url: "assets/images/fruit/lime.webp",
     },
     {
       id: 14,
-      url: "assets/images/lime.jpeg",
+      url: "assets/images/fruit/mango.webp",
     },
     {
       id: 15,
-      url: "assets/images/mango.jpeg",
+      url: "assets/images/fruit/melon.webp",
     },
     {
       id: 16,
-      url: "assets/images/melon.jpeg",
+      url: "assets/images/fruit/papaya.webp",
     },
     {
       id: 17,
-      url: "assets/images/papaya.jpeg",
+      url: "assets/images/fruit/pineapple.webp",
     },
     {
       id: 18,
-      url: "assets/images/pineapple.jpeg",
+      url: "assets/images/fruit/plum.webp",
     },
     {
       id: 19,
-      url: "assets/images/plum.jpeg",
+      url: "assets/images/fruit/pomegranate.webp",
     },
     {
       id: 20,
-      url: "assets/images/pomegranate.jpeg",
+      url: "assets/images/fruit/raspberry.webp",
     },
     {
       id: 21,
-      url: "assets/images/raspberry.jpeg",
-    },
-    {
-      id: 22,
-      url: "assets/images/watermelon.jpeg",
+      url: "assets/images/fruit/watermelon.webp",
     },
   ],
   colours: [
     {
       id: 1,
-      url: "assets/images/blue.jpeg",
+      url: "assets/images/colours/blue.webp",
     },
     {
       id: 2,
-      url: "assets/images/green.jpeg",
+      url: "assets/images/colours/green.webp",
     },
     {
       id: 3,
-      url: "assets/images/orange.jpeg",
+      url: "assets/images/colours/orange.webp",
     },
     {
       id: 4,
-      url: "assets/images/black.jpg",
+      url: "assets/images/colours/black.webp",
     },
     {
       id: 5,
-      url: "assets/images/brown.jpeg",
+      url: "assets/images/colours/brown.webp",
     },
     {
       id: 6,
-      url: "assets/images/grey.jpeg",
+      url: "assets/images/colours/grey.webp",
     },
     {
       id: 7,
-      url: "assets/images/lilac.jpeg",
+      url: "assets/images/colours/lilac.webp",
     },
     {
       id: 8,
-      url: "assets/images/navy.jpeg",
+      url: "assets/images/colours/navy.webp",
     },
     {
       id: 9,
-      url: "assets/images/pink.jpeg",
+      url: "assets/images/colours/pink.webp",
     },
     {
       id: 10,
-      url: "assets/images/purple.jpeg",
+      url: "assets/images/colours/purple.webp",
     },
     {
       id: 11,
-      url: "assets/images/red.jpeg",
+      url: "assets/images/colours/red.webp",
     },
     {
       id: 12,
-      url: "assets/images/sky-blue.jpeg",
+      url: "assets/images/colours/sky-blue.webp",
     },
   ],
 };
