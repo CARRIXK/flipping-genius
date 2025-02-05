@@ -2,178 +2,181 @@ const cards = {
   animals: [
     {
       id: 1,
-      url: "assets/images/ant.png",
+      url: "assets/images/animals/ant.webp",
     },
     {
       id: 2,
-      url: "assets/images/cat.png",
+      url: "assets/images/animals/cat.webp",
     },
     {
       id: 3,
-      url: "assets/images/dog.png",
+      url: "assets/images/animals/dog.webp",
     },
     {
       id: 4,
-      url: "assets/images/mouse.png",
+      url: "assets/images/animals/mouse.webp",
     },
     {
       id: 5,
-      url: "assets/images/rabbit.png",
+      url: "assets/images/animals/rabbit.webp",
     },
     {
       id: 6,
-      url: "assets/images/cowpng.png",
+      url: "assets/images/animals/cow.webp",
     },
     {
       id: 7,
-      url: "assets/images/elephant.png",
+      url: "assets/images/animals/elephant.webp",
     },
     {
       id: 8,
-      url: "assets/images/horse.png",
+      url: "assets/images/animals/horse.webp",
     },
   ],
   fruits: [
     {
       id: 1,
-      url: "assets/images/apple.jpeg",
+      url: "assets/images/fruit/apple.webp",
     },
     {
       id: 2,
-      url: "assets/images/banana.jpeg",
+      url: "assets/images/fruit/banana.webp",
     },
     {
       id: 3,
-      url: "assets/images/grapes.jpeg",
+      url: "assets/images/fruit/grapes.webp",
     },
     {
       id: 4,
-      url: "assets/images/lemon.jpeg",
+      url: "assets/images/fruit/lemon.webp",
     },
     {
       id: 5,
-      url: "assets/images/orange.jpeg",
+      url: "assets/images/fruit/peach.webp",
     },
     {
       id: 6,
-      url: "assets/images/peach.jpeg",
+      url: "assets/images/fruit/pear.webp",
     },
     {
       id: 7,
-      url: "assets/images/pear.jpeg",
+      url: "assets/images/fruit/strawberry.webp",
     },
     {
       id: 8,
-      url: "assets/images/strawberry.jpeg",
+      url: "assets/images/fruit/avacado.webp",
     },
     {
       id: 9,
-      url: "assets/images/avacado.jpeg",
+      url: "assets/images/fruit/cherry.webp",
     },
     {
       id: 10,
-      url: "assets/images/cherry.jpeg",
+      url: "assets/images/fruit/coconut.webp",
     },
     {
       id: 11,
-      url: "assets/images/coconut.jpeg",
+      url: "assets/images/fruit/grapefruit.webp",
     },
     {
       id: 12,
-      url: "assets/images/grapefruit.jpeg",
+      url: "assets/images/fruit/kiwi.webp",
     },
     {
       id: 13,
-      url: "assets/images/kiwi.jpeg",
+      url: "assets/images/fruit/lime.webp",
     },
     {
       id: 14,
-      url: "assets/images/lime.jpeg",
+      url: "assets/images/fruit/mango.webp",
     },
     {
       id: 15,
-      url: "assets/images/mango.jpeg",
+      url: "assets/images/fruit/melon.webp",
     },
     {
       id: 16,
-      url: "assets/images/melon.jpeg",
+      url: "assets/images/fruit/papaya.webp",
     },
     {
       id: 17,
-      url: "assets/images/papaya.jpeg",
+      url: "assets/images/fruit/pineapple.webp",
     },
     {
       id: 18,
-      url: "assets/images/pineapple.jpeg",
+      url: "assets/images/fruit/plum.webp",
     },
     {
       id: 19,
-      url: "assets/images/plum.jpeg",
+      url: "assets/images/fruit/pomegranate.webp",
     },
     {
       id: 20,
-      url: "assets/images/pomegranate.jpeg",
+      url: "assets/images/fruit/raspberry.webp",
     },
     {
       id: 21,
-      url: "assets/images/raspberry.jpeg",
-    },
-    {
-      id: 22,
-      url: "assets/images/watermelon.jpeg",
+      url: "assets/images/fruit/watermelon.webp",
     },
   ],
   colours: [
     {
       id: 1,
-      url: "assets/images/blue.jpeg",
+      url: "assets/images/colours/blue.webp",
     },
     {
       id: 2,
-      url: "assets/images/green.jpeg",
+      url: "assets/images/colours/green.webp",
     },
     {
       id: 3,
-      url: "assets/images/orange.jpeg",
+      url: "assets/images/colours/orange.webp",
     },
     {
       id: 4,
-      url: "assets/images/black.jpg",
+      url: "assets/images/colours/black.webp",
     },
     {
       id: 5,
-      url: "assets/images/brown.jpeg",
+      url: "assets/images/colours/brown.webp",
     },
     {
       id: 6,
-      url: "assets/images/grey.jpeg",
+      url: "assets/images/colours/grey.webp",
     },
     {
       id: 7,
-      url: "assets/images/lilac.jpeg",
+      url: "assets/images/colours/lilac.webp",
     },
     {
       id: 8,
-      url: "assets/images/navy.jpeg",
+      url: "assets/images/colours/navy.webp",
     },
     {
       id: 9,
-      url: "assets/images/pink.jpeg",
+      url: "assets/images/colours/pink.webp",
     },
     {
       id: 10,
-      url: "assets/images/purple.jpeg",
+      url: "assets/images/colours/purple.webp",
     },
     {
       id: 11,
-      url: "assets/images/red.jpeg",
+      url: "assets/images/colours/red.webp",
     },
     {
       id: 12,
-      url: "assets/images/sky-blue.jpeg",
+      url: "assets/images/colours/sky-blue.webp",
     },
   ],
 };
+
+// audio files
+const ShuffleSound = new Audio('assets/sounds/cardshuffle.mp3');
+const flipSound = new Audio('assets/sounds/flipcard.mp3');
+const matchSound = new Audio('assets/sounds/matchcard.mp3');
+const winSound = new Audio('assets/sounds/levelwin.mp3');
+const gameOverSound = new Audio('assets/sounds/gameover.mp3');
 
 let gameRows = 4;
 let gameCols = 4;
@@ -181,6 +184,7 @@ let selectedCategory = Object.keys(cards)[0];
 let timerInterval;
 let startTime;
 let isTimerRunning = false;
+let isMuted = false;
 
 document.getElementById("start-game").addEventListener("click", () => {
   createBoard(gameRows, gameCols, selectedCategory);
@@ -221,6 +225,21 @@ document.getElementById('game-controls-viewer').addEventListener('click', () => 
   }
 });
 
+document.getElementById('volume-control').addEventListener('click', () => {
+  isMuted = !isMuted;
+  const volumeControlButton = document.getElementById('volume-control');
+  const volumeHighIcon = volumeControlButton.querySelector('.fa-volume-high');
+  const volumeXmarkIcon = volumeControlButton.querySelector('.fa-volume-xmark');
+
+  if (isMuted) {
+    volumeHighIcon.style.display = 'none';
+    volumeXmarkIcon.style.display = 'inline';
+  } else {
+    volumeHighIcon.style.display = 'inline';
+    volumeXmarkIcon.style.display = 'none';
+  }
+});
+
 function populateCategoryDropdown() {
   const categoryDropdown = document.getElementById("category-setting");
   categoryDropdown.innerHTML = ""; // Clear existing options
@@ -250,9 +269,13 @@ function createBoard(rows, cols, category) {
     card.style.transform = 'translateY(0) rotateX(0)'; // Set initial state
     card.style.zIndex = 1; // Ensure the card is above the new cards
     card.classList.add("removing");
+    // Play flip sound
+    //playFlipSound(0.1);
     card.style.animationDelay = `${index * 0.1}s`;
   });
-  playShuffleSound();
+
+  // Play shuffle sound with adjusted duration
+  //playShuffleSound(((existingCards.length == 0 ? 16 : existingCards.length) * 100) / 1000);
 
   // Wait for the remove animation to finish before clearing the board and adding new cards
   setTimeout(() => {
@@ -347,6 +370,9 @@ function flipCard(e) {
   //Prevent flipping more than two cards
   if (flippedCards.length >= 2) return;
 
+  // Play flip sound
+  playFlipSound();
+
   // Flip the clicked card
   card.classList.add("flipped");
   playFlipSound();
@@ -392,16 +418,11 @@ function flipCard(e) {
 
 function completeGame() {
   stopTimer();
-  playGameOverSound();
-  //wait until game oversound plays before moving on (3 seconds)
+  const finalTime = document.querySelector("#game-timer span").textContent;
+  const attempts = parseInt(document.getElementById("attemptCount").innerText);
+  const difficulty = document.getElementById("difficulty-setting").value;
 
-  setTimeout(() => {
-      
-    playwinSound();
-
-    const finalTime = document.querySelector("#game-timer span").textContent;
-    const attempts = parseInt(document.getElementById("attemptCount").innerText);
-    const difficulty = document.getElementById("difficulty-setting").value;
+  playwinSound();
 
     // Save the score to localStorage
     saveScore(difficulty, finalTime, attempts);
@@ -410,8 +431,6 @@ function completeGame() {
     const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
     document.getElementById('final-time').textContent = finalTime;
     congratsModal.show();
-  }, 3000); 
-
 }
 
 
@@ -524,44 +543,29 @@ document.addEventListener('DOMContentLoaded', () => {
   populateHighScores();
 });
 
-// audio files
-const ShuffleSound = new Audio('assets/sounds/cardshuffle.mp3');
-const flipSound = new Audio('assets/sounds/flipcard.mp3');
-const matchSound = new Audio('assets/sounds/matchcard.mp3');
-const winSound = new Audio('assets/sounds/levelwin.mp3');
-const gameOverSound = new Audio('assets/sounds/gameover.mp3');
-
-function playShuffleSound() {    
-    ShuffleSound.play();
+function playShuffleSound(duration) {
+  if (isMuted) return;
+  ShuffleSound.playbackRate = ShuffleSound.duration / duration;
+  ShuffleSound.play();
 }
-function playFlipSound() {
+
+function playFlipSound(duration = 1) {
+  if (isMuted) return;
+  flipSound.playbackRate = flipSound.duration / duration;
   flipSound.play();
 }
 
 function playMatchSound() {
+  if (isMuted) return;
   matchSound.play();
 }
 
 function playwinSound() {
-    winSound.play();
+  if (isMuted) return;
+  winSound.play();
 }
 
 function playGameOverSound() {
-    gameOverSound.play();
+  if (isMuted) return;
+  gameOverSound.play();
 }
-
-
-// Get the audio element and the button
-const audio = document.getElementById('myAudio');
-const muteButton = document.getElementById('muteButton');
-
-// Add an event listener to the button
-muteButton.addEventListener('click', function() {
-    if (audio.muted) {
-        audio.muted = false;
-        muteButton.textContent = 'Mute';
-    } else {
-        audio.muted = true;
-        muteButton.textContent = 'Unmute';
-    }
-});
