@@ -191,18 +191,18 @@ document.getElementById("start-game-start").addEventListener("click", () => {
 
   // Set the gameRows and gameCols based on the selected difficulty
   switch (difficulty) {
-      case "easy":
-          gameRows = 4;
-          gameCols = 4;
-          break;
-      case "medium":
-          gameRows = 6;
-          gameCols = 6;
-          break;
-      case "hard":
-          gameRows = 8;
-          gameCols = 8;
-          break;
+    case "easy":
+      gameRows = 4;
+      gameCols = 4;
+      break;
+    case "medium":
+      gameRows = 6;
+      gameCols = 6;
+      break;
+    case "hard":
+      gameRows = 8;
+      gameCols = 8;
+      break;
   }
 
   // Create the game board
@@ -213,7 +213,7 @@ document.getElementById("start-game-start").addEventListener("click", () => {
   startPage.style.transition = "opacity 2s ease-out";
   startPage.style.opacity = 0;
   setTimeout(() => {
-      startPage.style.display = "none";
+    startPage.style.display = "none";
   }, 2000); // Match the duration of the transition
 });
 
@@ -413,9 +413,9 @@ function createBoard(rows, cols, category) {
         card.addEventListener("animationend", () => {
           card.style.transform = "";
           card.classList.remove("deal");
-          // playFlipSound();
         });
       }, index * 100); // Adjust the delay as needed
+      playFlipSound();
     });
   }, existingCards.length * 100); // Adjust the timeout based on the number of existing cards
 }
@@ -451,11 +451,8 @@ function flipCard(e) {
   if (flippedCards.length >= 2) return;
 
   //Stop flipping sound from playing on card that has already been flipped
-  if(card.classList.contains("flipped")) return;
-
-  // Play flip sound
-  playFlipSound();
-
+  if (card.classList.contains("flipped")) return
+  
   // Flip the clicked card
   card.classList.add("flipped");
 
@@ -504,19 +501,19 @@ function completeGame() {
   const difficulty = document.getElementById("difficulty-setting").value;
 
   playGameEndSound();
-    //wait until end game sound plays before congratulations screen
+  //wait until end game sound plays before congratulations screen
   setTimeout(() => {
     playCongratsSound();
 
     // Save the score to localStorage
     saveScore(difficulty, finalTime, attempts);
-  
+
     // Show the congratulations modal
     const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
     document.getElementById('final-time').textContent = finalTime;
     congratsModal.show();
-}, 3000);
-  
+  }, 3000);
+
 
 }
 
