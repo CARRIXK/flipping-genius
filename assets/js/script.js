@@ -233,7 +233,7 @@ function flipCard(e) {
       setTimeout(() => {
         flippedCards.forEach(card => {
           card.classList.replace("flipped", "matched");
-          card.removeChild(card.lastChild);
+          //card.removeChild(card.lastChild);
           console.log(card);
 
         });
@@ -291,7 +291,7 @@ function saveScore(difficulty, time, attempts) {
     localStorage.setItem(difficulty, JSON.stringify(currentScore));
     notifyNewHighScore();
   }
-  
+
   populateHighScores()
 
   // Set expiration for 3 months
