@@ -252,11 +252,13 @@ function createBoard(rows, cols, category) {
     card.classList.add("removing");
     card.style.animationDelay = `${index * 0.1}s`;
   });
+  playShuffleSound();
 
   // Wait for the remove animation to finish before clearing the board and adding new cards
   setTimeout(() => {
     // Clear any existing content
     board.innerHTML = "";
+    playShuffleSound();
 
     // Create an array of card values with pairs
     const cardValues = [];
@@ -271,6 +273,7 @@ function createBoard(rows, cols, category) {
 
     // Shuffle the card values
     cardValues.sort(() => 0.5 - Math.random());
+  
 
     let cardIndex = 0;
     for (let row = 0; row < rows; row++) {
@@ -299,6 +302,7 @@ function createBoard(rows, cols, category) {
       }
 
       board.appendChild(rowElement);
+      
     }
 
     // Add the deal class to each card one at a time
@@ -345,6 +349,7 @@ function flipCard(e) {
 
   // Flip the clicked card
   card.classList.add("flipped");
+  playFlipSound();
 
   // Update flipped cards after flipping the new one
   flippedCards = document.querySelectorAll(".flipped");
@@ -367,7 +372,7 @@ function flipCard(e) {
           card.classList.replace("flipped", "matched");
           //card.removeChild(card.lastChild);
           console.log(card);
-
+          playMatchSound();
         });
       }, 800);
 
@@ -383,20 +388,32 @@ function flipCard(e) {
   }
 }
 
+
+
 function completeGame() {
   stopTimer();
-  const finalTime = document.querySelector("#game-timer span").textContent;
-  const attempts = parseInt(document.getElementById("attemptCount").innerText);
-  const difficulty = document.getElementById("difficulty-setting").value;
+  playGameOverSound();
+  //wait until game oversound plays before moving on (3 seconds)
 
-  // Save the score to localStorage
-  saveScore(difficulty, finalTime, attempts);
+  setTimeout(() => {
+      
+    playwinSound();
 
-  // Show the congratulations modal
-  const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
-  document.getElementById('final-time').textContent = finalTime;
-  congratsModal.show();
+    const finalTime = document.querySelector("#game-timer span").textContent;
+    const attempts = parseInt(document.getElementById("attemptCount").innerText);
+    const difficulty = document.getElementById("difficulty-setting").value;
+
+    // Save the score to localStorage
+    saveScore(difficulty, finalTime, attempts);
+
+    // Show the congratulations modal
+    const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
+    document.getElementById('final-time').textContent = finalTime;
+    congratsModal.show();
+  }, 3000); 
+
 }
+
 
 function saveScore(difficulty, time, attempts) {
   const currentScore = { time, attempts, date: Date.now() };
@@ -467,6 +484,7 @@ function increaseCount(elementId) {
   document.getElementById(elementId).innerText = newCount;
 
   // Check if all cards have been matched
+
   if (elementId == 'matchCount' && newCount === (gameRows * gameCols) / 2) {
     completeGame();
   }
