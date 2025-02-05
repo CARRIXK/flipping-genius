@@ -495,14 +495,15 @@ function flipCard(e) {
   } else {
     console.log(`Only ${flippedCards.length} card has been flipped`);
   }
+  document.getElementById("accuracyVal").innerText = calculateAccuracy().toString();
 }
 
 function completeGame() {
   stopTimer();
   const finalTime = document.querySelector("#game-timer span").textContent;
   const attempts = parseInt(document.getElementById("attemptCount").innerText);
+  const accuracy = document.getElementById("accuracyVal").innerText;
   const difficulty = document.getElementById("difficulty-setting").value;
-
   
   // Call this function when you want to restart the match effect
   restartMatchAnimation();
@@ -518,10 +519,21 @@ function completeGame() {
     // Show the congratulations modal
     const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
     document.getElementById('final-time').textContent = finalTime;
+    document.getElementById('accuracy').textContent = accuracy;
     congratsModal.show();
   }, 3000);
 
 
+}
+
+function calculateAccuracy(){
+    const matchCount = parseInt(document.getElementById("matchCount").innerText);
+    const attempts = parseInt(document.getElementById("attemptCount").innerText);
+
+    if(matchCount && attempts){
+      accuracy = Math.round((matchCount / attempts) * 100) / 100;
+      return accuracy;
+    }
 }
 
 function restartMatchAnimation() {
@@ -537,9 +549,6 @@ function restartMatchAnimation() {
     });
   }, 800);
 }
-
-
-
 
 
 function saveScore(difficulty, time, attempts) {
