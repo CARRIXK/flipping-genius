@@ -2,35 +2,35 @@ const cards = {
   animals: [
     {
       id: 1,
-      url: "assets/images/ant.png",
+      url: "assets/images/animals/ant.webp",
     },
     {
       id: 2,
-      url: "assets/images/cat.png",
+      url: "assets/images/animals/cat.webp",
     },
     {
       id: 3,
-      url: "assets/images/dog.png",
+      url: "assets/images/animals/dog.webp",
     },
     {
       id: 4,
-      url: "assets/images/mouse.png",
+      url: "assets/images/animals/mouse.webp",
     },
     {
       id: 5,
-      url: "assets/images/rabbit.png",
+      url: "assets/images/animals/rabbit.webp",
     },
     {
       id: 6,
-      url: "assets/images/cowpng.png",
+      url: "assets/images/animals/cow.webp",
     },
     {
       id: 7,
-      url: "assets/images/elephant.png",
+      url: "assets/images/animals/elephant.webp",
     },
     {
       id: 8,
-      url: "assets/images/horse.png",
+      url: "assets/images/animals/horse.webp",
     },
   ],
   fruits: [
