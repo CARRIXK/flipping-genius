@@ -361,6 +361,8 @@ function flipCard(e) {
 
   let card = e.currentTarget;
 
+  // card.style.pointerEvents = none;
+
   // Start the timer if it's not already running
   if (!isTimerRunning) {
     startTimer();
@@ -371,6 +373,9 @@ function flipCard(e) {
 
   //Prevent flipping more than two cards
   if (flippedCards.length >= 2) return;
+
+  //Stop flipping sound from playing on card that has already been flipped
+  if(card.classList.contains("flipped")) return;
 
   // Play flip sound
   playFlipSound();
