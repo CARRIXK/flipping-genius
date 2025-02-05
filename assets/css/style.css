@@ -88,7 +88,7 @@ header,
     align-items: center;
     justify-content: center;
     background-color: #FFFFFF;
-    background-size: 112%;
+    background-size: cover;
     transform: rotateY(180deg);
     background-position: center;
 }
