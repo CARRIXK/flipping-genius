@@ -456,6 +456,9 @@ function flipCard(e) {
   // Flip the clicked card
   card.classList.add("flipped");
 
+  // Play flipped sound
+  playFlipSound();
+
   // Update flipped cards after flipping the new one
   flippedCards = document.querySelectorAll(".flipped");
 
@@ -499,6 +502,16 @@ function completeGame() {
   const finalTime = document.querySelector("#game-timer span").textContent;
   const attempts = parseInt(document.getElementById("attemptCount").innerText);
   const difficulty = document.getElementById("difficulty-setting").value;
+
+
+    // matchedCards = document.querySelectorAll(".matched");
+    // matchedCards.forEach(card => {
+    //   console.log("Card before", card);
+    //   card.classList.remove("matched");
+    //   console.log("Matched removed", card);
+    //   card.classList.add("matched");
+    //   console.log("Match added", card);
+    // });
 
   playGameEndSound();
   //wait until end game sound plays before congratulations screen
