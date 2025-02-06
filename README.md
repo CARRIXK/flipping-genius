@@ -17,24 +17,6 @@ This project is built using the following technologies:
 - RealFaviconGenerator - Create a favicon file
 - Github co-pilot
 
-##CREDITS
-
-This project would not have been possible without the support and contributions of the following individuals and resources:
-
-### Contributors-Development Team
-
-Flipping Genius is a collaborative effort developed by:
-
-- Carrick Entwistle - Project lead, Initial development and testing ([LinkedIn]https://linkedin.com/in/carrick-entwistle))
-- David Coles - Initial development, Frontend, UIX and testing/debugging ([LinkedIn] https://linkedin.com/in/davidcolesuk))
-- Nils Lugner - Cards and UI, testing, Revenue Generation ([LinkedIn](https://www.linkedin.com/in/nils-lugner))
-- Josh Williams - Sound effects and UI,
-
-### Special Thanks
-
-**Carrick Entwistle** Providing feedback and suggestions
-.**David Coles** for his invalueable Javascript effort.
-
 ### Resources
 
 - [Teach Prints](https://www.teachprints.com/) - For providing free images used in the project.
@@ -66,7 +48,7 @@ Initial wireframes for desktop, tablet and mobile were made.
 
 # Testing/validation
 
-## Lighthouse automated testing:\*\*
+## Lighthouse automated testing:
 
 Google Lighthouse to assess the site's performance, accessibility, and SEO. By conducting audits for both mobile and desktop views, Key performance metrics such as Largest Contentful Paint (LCP) and First Contentful Paint (FCP) were identified. Necessary code adjustments were then made to enhance scores, resulting in a faster, more accessible, and SEO-optimized website.
 
@@ -98,39 +80,29 @@ Deployment steps:
 
 ## Credits
 
-## Credits
+This project would not have been possible without the support and contributions of the following individuals and resources:
 
-This project wouldn't have been possible without the support and contributions of the following individuals and resources:
+### Contributors-Development Team
 
-### Contributors
+Flipping Genius is a collaborative effort developed by:
 
-- Carrick Entvistle - Initial development and project lead ([LinkedIn](https://www.linkedin.com/in/nils-lugner))
-- David Coles
-  -Nils Lugner
-- Josh Williams
+- Carrick Entwistle - Project lead, Initial development and testing ([LinkedIn]https://linkedin.com/in/carrick-entwistle))
+- David Coles - Initial development, Frontend, UIX and testing/debugging ([LinkedIn] https://linkedin.com/in/davidcolesuk))
+- Nils Lugner - Cards and UI, testing, Revenue Generation ([LinkedIn](https://www.linkedin.com/in/nils-lugner))
+- Josh Williams - Sound effects and UI,
 
 ### Special Thanks
 
-- Dev2**Carrick Entvistle** - Project management
-- Dev 1**David Coles** - User interface design and front-end development
-- Dev3 Nils Lugner - Images and UI testing
-- Dev4 Josh Williams - Sound and UI
+**Carrick Entwistle** Providing feedback and suggestions
+.**David Coles** for his invalueable Javascript effort.
 
 ### Resources
 
 - [OpenAITeach Print](https://www.teachprint.com/) - For providing Flash card images used in this project
 - [Pixlr](https://pixlr.com/) - For providing free image convertion used in the project
 - [Font Awesome](https://fontawesome.com/) - For the icons used in the project
+- [GitHub Copilot](https://copilot.github.com) was used to create the game's logo, accelerate development, and assist with debugging.
 
-### License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-### Contact
-
-For any questions or feedback, please contact us at [email@example.com](mailto:email@example.com).
-
-[GitHub Copilot](https://copilot.github.com) was used to create the game's logo, accelerate development, and assist with debugging.
 
 ## Future Enhancements
 
