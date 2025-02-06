@@ -53,6 +53,29 @@ Initial wireframes for desktop, tablet and mobile were made.
 
 [Flipping Genius - Desktop, tablet and mobile wireframes.pdf](https://github.com/user-attachments/files/18688093/Flipping.Genius.-.Desktop.tablet.and.mobile.wireframes.pdf)
 
+
+# Testing/validation
+
+## Lighthouse automated testing:** 
+
+Google Lighthouse to assess the site's performance, accessibility, and SEO. By conducting audits for both mobile and desktop views, Key performance metrics such as Largest Contentful Paint (LCP) and First Contentful Paint (FCP) were identified. Necessary code adjustments were then made to enhance scores, resulting in a faster, more accessible, and SEO-optimized website.
+
+![image](https://github.com/user-attachments/assets/ff9b5673-3dc3-473d-a98c-fecc75a04314)
+
+
+
+## Manual Testing: 
+
+Manual tests were conducted to ensure the functionality and responsiveness of the website. Each link was manually tested to confirm that it redirected to the correct destination. All sections were checked for responsiveness across different devices (desktop, tablet, and mobile) to ensure that the layout adjusted properly and remained user-friendly. Additionally, hover effects were tested by interacting with various elements like buttons and navigation items to verify that the visual changes (bold text) worked consistently. These tests helped ensure a seamless user experience and proper functionality across the site.
+
+## Validator Testing
+
+* **HTML** : No errors were returned when passing through the official [W3C Markup validator](https://validator.w3.org/#validate_by_input+with_options)
+
+* **CSS** : No errors were returned when passing through the official [W3C CSS validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
+ 
+
+
 ## Deployment
 
 The site has been set up using GitHub Pages and can be accessed here [https://carrixk.github.io/flipping-genius/](https://carrixk.github.io/flipping-genius/)
