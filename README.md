@@ -51,7 +51,7 @@ We have followed Agile planning methodologies, breaking down the development pro
 Initial wireframes for desktop, tablet and mobile were made. 
 
 
-
+[Flipping Genius - Desktop, tablet and mobile wireframes.pdf](https://github.com/user-attachments/files/18688093/Flipping.Genius.-.Desktop.tablet.and.mobile.wireframes.pdf)
 
 ## Deployment
 
@@ -67,10 +67,8 @@ Deployment steps:
    - Save the settings. GitHub then automatically built and deployed the site.
 
 
-
 ## Credits
 
-## AI Declaration
 [GitHub Copilot](https://copilot.github.com) was used to generate the games logo. It was also used to accelerate development. 
 
 
