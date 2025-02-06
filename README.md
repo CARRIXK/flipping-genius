@@ -12,7 +12,6 @@ This project is built using the following technologies:
 - CSS – Styling and animations
 - JavaScript – Game logic and interactivity
 - [Bootstrap](https://getbootstrap.com)  – Responsive design and layout
-- [Google Fonts](https://fonts.google.com/)  – Custom typography
 - [Font Awesome](https://fontawesome.com/kits/1110908b34/setup?created=yes&hosting=hosted) – Icons for UI enhancements
 - CSS-Pattern.com - Used for the back style of the cards
 - RealFaviconGenerator - Create a favicon file
@@ -91,7 +90,7 @@ Deployment steps:
 
 ## Credits
 
-[GitHub Copilot](https://copilot.github.com) was utilized to generate the games logo and accelerate development. 
+[GitHub Copilot](https://copilot.github.com) was used to create the game's logo, accelerate development, and assist with debugging.
 
 
 ## Future Enhancements
