@@ -98,6 +98,38 @@ Deployment steps:
 
 ## Credits
 
+## Credits
+
+This project wouldn't have been possible without the support and contributions of the following individuals and resources:
+
+### Contributors
+
+- Carrick Entvistle - Initial development and project lead ([LinkedIn](https://www.linkedin.com/in/nils-lugner))
+- David Coles
+  -Nils Lugner
+- Josh Williams
+
+### Special Thanks
+
+- Dev2**Carrick Entvistle** - Project management
+- Dev 1**David Coles** - User interface design and front-end development
+- Dev3 Nils Lugner - Images and UI testing
+- Dev4 Josh Williams - Sound and UI
+
+### Resources
+
+- [OpenAITeach Print](https://www.teachprint.com/) - For providing Flash card images used in this project
+- [Pixlr](https://pixlr.com/) - For providing free image convertion used in the project
+- [Font Awesome](https://fontawesome.com/) - For the icons used in the project
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Contact
+
+For any questions or feedback, please contact us at [email@example.com](mailto:email@example.com).
+
 [GitHub Copilot](https://copilot.github.com) was used to create the game's logo, accelerate development, and assist with debugging.
 
 ## Future Enhancements
