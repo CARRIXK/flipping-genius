@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flipping Genius!</title>
-    <meta name="description" content="Flipping Genius! is a memory matching game that challenges players to find matching pairs of cards.">
+    <meta name="description"
+        content="Flipping Genius! is a memory matching game that challenges players to find matching pairs of cards.">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
@@ -46,6 +47,10 @@
                     <i class="fa-solid fa-bullseye"></i>
                     Attempts = <span id="attemptCount">0</span>
                 </div>
+                <div id="accuracy">
+                    <i class="fas fa-chart-line"></i>
+                    Accuracy = <span id="accuracyVal">0.00</span>%
+                </div>
             </div>
         </header>
         <section id="game-board-outer" class="mb-3">
@@ -74,10 +79,46 @@
                 data-bs-target="#instructionsModal" aria-label="Instructions">
                 <i class="fa-solid fa-circle-question"></i>
             </button>
+            <button id="volume-control" type="button" class="btn btn-info mx-2 text-nowrap" aria-label="Volume control">
+                <i class="fa-solid fa-volume-high"></i>
+                <i class="fa-solid fa-volume-xmark" style="display: none;"></i>
+            </button>
         </section>
-<!--mute button-->
-<button id="muteButton">Mute</button>
-<button id="unButton">unMute</button>
+
+        <section id="start-page">
+            <div>
+                <img src="assets/images/flipping-genius.webp" alt="Flipping Genius Logo"
+                    class="img-fluid mx-auto d-block mb-1" width="150" height="150">
+                <h1>Welcome to Flipping Genius!</h1>
+                <p>Flipping Genius! is a memory matching game that challenges players to find matching pairs of cards.
+                </p>
+                <button id="start-game-start" class="btn btn-primary btn-lg mx-2 text-nowrap mb-4">
+                    <i class="fa-solid fa-play"></i>
+                    Start Game
+                </button>
+                <select id="difficulty-setting-start" class="form-select mx-2 mb-4" aria-label="Select Difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <select id="category-setting-start" class="form-select mx-2 mb-4" aria-label="Select Category"></select>
+                <button type="button" class="btn btn-secondary mx-2 text-nowrap" data-bs-toggle="modal"
+                    data-bs-target="#highScoresModal">
+                    <i class="fa-solid fa-trophy"></i>
+                    High Scores
+                </button>
+                <button type="button" class="btn btn-info mx-2 text-nowrap" data-bs-toggle="modal"
+                    data-bs-target="#instructionsModal" aria-label="Instructions">
+                    <i class="fa-solid fa-circle-question"></i>
+                </button>
+                <button id="volume-control-start" type="button" class="btn btn-info mx-2 text-nowrap"
+                    aria-label="Volume control">
+                    <i class="fa-solid fa-volume-high"></i>
+                    <i class="fa-solid fa-volume-xmark" style="display: none;"></i>
+                </button>
+            </div>
+        </section>
+
         <!-- Instructions Modal -->
         <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel"
             aria-hidden="true">
@@ -138,6 +179,8 @@
                     <div class="modal-body">
                         <p>Congratulations on finishing the game!</p>
                         <p>Your time: <span id="final-time"></span></p>
+                        <p>Attempts: <span id="final-attempts"></span></p>
+                        <p>Accuracy: <span id="final-accuracy"></span></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
