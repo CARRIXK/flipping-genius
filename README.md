@@ -11,26 +11,41 @@ This project is built using the following technologies:
 - HTML – Structuring the game elements
 - CSS – Styling and animations
 - JavaScript – Game logic and interactivity
-- [Bootstrap](https://getbootstrap.com)  – Responsive design and layout
+- [Bootstrap](https://getbootstrap.com) – Responsive design and layout
 - [Font Awesome](https://fontawesome.com/kits/1110908b34/setup?created=yes&hosting=hosted) – Icons for UI enhancements
 - CSS-Pattern.com - Used for the back style of the cards
 - RealFaviconGenerator - Create a favicon file
+- Github co-pilot
 
-## Development Team
+##CREDITS
+
+This project would not have been possible without the support and contributions of the following individuals and resources:
+
+### Contributors-Development Team
 
 Flipping Genius is a collaborative effort developed by:
 
-- David Coles
-- Carrick Entwistle
-- Nils Olov Lugner
-- Josh Williams
+- Carrick Entwistle - Project lead, Initial development and testing ([LinkedIn]https://linkedin.com/in/carrick-entwistle))
+- David Coles - Initial development, Frontend, UIX and testing/debugging ([LinkedIn] https://linkedin.com/in/davidcolesuk))
+- Nils Lugner - Cards and UI, testing, Revenue Generation ([LinkedIn](https://www.linkedin.com/in/nils-lugner))
+- Josh Williams - Sound effects and UI,
+
+### Special Thanks
+
+**Carrick Entwistle** Providing feedback and suggestions
+.**David Coles** for his invalueable Javascript effort.
+
+### Resources
+
+- [Teach Prints](https://www.teachprints.com/) - For providing free images used in the project.
+- [PixlR](https://www.pixlr.comunsplash.com/) - For providing free image convertion used in the project.
+- [Font Awesome](https://fontawesome.com/) - For the icons used in the project.
 
 ## Project Methodology
 
 We have followed Agile planning methodologies, breaking down the development process into user stories, sprints, and iterative improvements. This approach has allowed for effective team collaboration and continuous enhancement of the game.
 
 ## How to Play
-
 
 1. Choose the dificullty you will like to play.
 2. Select from the options the card types you want and start game
@@ -41,38 +56,31 @@ We have followed Agile planning methodologies, breaking down the development pro
 7. Continue until all pairs are found.
 8. Use the mute button to toggle sound effects on and off.
 
-
 ## Design
-
 
 ## Wireframes
 
-Initial wireframes for desktop, tablet and mobile were made. 
-
+Initial wireframes for desktop, tablet and mobile were made.
 
 [Flipping Genius - Desktop, tablet and mobile wireframes.pdf](https://github.com/user-attachments/files/18688093/Flipping.Genius.-.Desktop.tablet.and.mobile.wireframes.pdf)
 
-
 # Testing/validation
 
-## Lighthouse automated testing:** 
+## Lighthouse automated testing:\*\*
 
 Google Lighthouse to assess the site's performance, accessibility, and SEO. By conducting audits for both mobile and desktop views, Key performance metrics such as Largest Contentful Paint (LCP) and First Contentful Paint (FCP) were identified. Necessary code adjustments were then made to enhance scores, resulting in a faster, more accessible, and SEO-optimized website.
 
 ![image](https://github.com/user-attachments/assets/ff9b5673-3dc3-473d-a98c-fecc75a04314)
 
-
-
-## Manual Testing: 
+## Manual Testing:
 
 Throughout development, manual testing was conducted to verify the website's functionality and responsiveness. Each section was evaluated across desktop, tablet, and mobile devices to ensure the layout adapted correctly and maintained a user-friendly experience. Additionally, CSS animations and sound effects underwent rigorous testing to ensure consistency and performance. These efforts helped deliver a seamless user experience and optimal site functionality.
 
 ## Validator Testing
 
-* **HTML** : No errors were returned when passing through the official [W3C Markup validator](https://validator.w3.org/#validate_by_input+with_options)
+- **HTML** : No errors were returned when passing through the official [W3C Markup validator](https://validator.w3.org/#validate_by_input+with_options)
 
-* **CSS** : No errors were returned when passing through the official [W3C CSS validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
- 
+- **CSS** : No errors were returned when passing through the official [W3C CSS validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
 
 ## Deployment
 
@@ -81,17 +89,48 @@ The site has been set up using GitHub Pages and can be accessed here [https://ca
 Deployment steps:
 
 **Deployment Steps:**
-   - Push all project files to the main branch of the GitHub repository.
-   - Go to the repository settings.
-   - Navigate to the "Pages" section.
-   - Under "Source," select the branch (e.g., `main`) and folder (e.g., `/root`) where the site files are located.
-   - Save the settings. GitHub then automatically built and deployed the site.
 
+- Push all project files to the main branch of the GitHub repository.
+- Go to the repository settings.
+- Navigate to the "Pages" section.
+- Under "Source," select the branch (e.g., `main`) and folder (e.g., `/root`) where the site files are located.
+- Save the settings. GitHub then automatically built and deployed the site.
 
 ## Credits
 
-[GitHub Copilot](https://copilot.github.com) was used to create the game's logo, accelerate development, and assist with debugging.
+## Credits
 
+This project wouldn't have been possible without the support and contributions of the following individuals and resources:
+
+### Contributors
+
+- Carrick Entvistle - Initial development and project lead ([LinkedIn](https://www.linkedin.com/in/nils-lugner))
+- David Coles
+  -Nils Lugner
+- Josh Williams
+
+### Special Thanks
+
+- Dev2**Carrick Entvistle** - Project management
+- Dev 1**David Coles** - User interface design and front-end development
+- Dev3 Nils Lugner - Images and UI testing
+- Dev4 Josh Williams - Sound and UI
+
+### Resources
+
+- [OpenAITeach Print](https://www.teachprint.com/) - For providing Flash card images used in this project
+- [Pixlr](https://pixlr.com/) - For providing free image convertion used in the project
+- [Font Awesome](https://fontawesome.com/) - For the icons used in the project
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### Contact
+
+For any questions or feedback, please contact us at [email@example.com](mailto:email@example.com).
+
+[GitHub Copilot](https://copilot.github.com) was used to create the game's logo, accelerate development, and assist with debugging.
 
 ## Future Enhancements
 

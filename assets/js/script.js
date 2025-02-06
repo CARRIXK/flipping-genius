@@ -172,10 +172,10 @@ const cards = {
 };
 
 // audio files
-const ShuffleSound = new Audio('assets/sounds/cardshuffle.mp3');
-const matchSound = new Audio('assets/sounds/matchcard.mp3');
-const winSound = new Audio('assets/sounds/levelwin.mp3');
-const gameOverSound = new Audio('assets/sounds/gameover.mp3');
+const ShuffleSound = new Audio("assets/sounds/cardshuffle.mp3");
+const matchSound = new Audio("assets/sounds/matchcard.mp3");
+const winSound = new Audio("assets/sounds/levelwin.mp3");
+const gameOverSound = new Audio("assets/sounds/gameover.mp3");
 
 let gameRows = 4;
 let gameCols = 4;
@@ -221,42 +221,53 @@ document.getElementById("start-game").addEventListener("click", () => {
   createBoard(gameRows, gameCols, selectedCategory);
 });
 
-document.getElementById("difficulty-setting-start").addEventListener("change", (event) => {
-  const difficulty = event.target.value;
-  document.getElementById("difficulty-setting").value = difficulty;
-});
+document
+  .getElementById("difficulty-setting-start")
+  .addEventListener("change", (event) => {
+    const difficulty = event.target.value;
+    document.getElementById("difficulty-setting").value = difficulty;
+  });
 
-document.getElementById("category-setting-start").addEventListener("change", (event) => {
-  selectedCategory = event.target.value;
-  document.getElementById("category-setting").value = selectedCategory;
-});
+document
+  .getElementById("category-setting-start")
+  .addEventListener("change", (event) => {
+    selectedCategory = event.target.value;
+    document.getElementById("category-setting").value = selectedCategory;
+  });
 
-document.getElementById('volume-control-start').addEventListener('click', () => {
-  isMuted = !isMuted;
-  const volumeControlButtonStart = document.getElementById('volume-control-start');
-  const volumeHighIconStart = volumeControlButtonStart.querySelector('.fa-volume-high');
-  const volumeXmarkIconStart = volumeControlButtonStart.querySelector('.fa-volume-xmark');
+document
+  .getElementById("volume-control-start")
+  .addEventListener("click", () => {
+    isMuted = !isMuted;
+    const volumeControlButtonStart = document.getElementById(
+      "volume-control-start"
+    );
+    const volumeHighIconStart =
+      volumeControlButtonStart.querySelector(".fa-volume-high");
+    const volumeXmarkIconStart =
+      volumeControlButtonStart.querySelector(".fa-volume-xmark");
 
-  if (isMuted) {
-    volumeHighIconStart.style.display = 'none';
-    volumeXmarkIconStart.style.display = 'inline';
-  } else {
-    volumeHighIconStart.style.display = 'inline';
-    volumeXmarkIconStart.style.display = 'none';
-  }
+    if (isMuted) {
+      volumeHighIconStart.style.display = "none";
+      volumeXmarkIconStart.style.display = "inline";
+    } else {
+      volumeHighIconStart.style.display = "inline";
+      volumeXmarkIconStart.style.display = "none";
+    }
 
-  const volumeControlButton = document.getElementById('volume-control');
-  const volumeHighIcon = volumeControlButton.querySelector('.fa-volume-high');
-  const volumeXmarkIcon = volumeControlButton.querySelector('.fa-volume-xmark');
+    const volumeControlButton = document.getElementById("volume-control");
+    const volumeHighIcon = volumeControlButton.querySelector(".fa-volume-high");
+    const volumeXmarkIcon =
+      volumeControlButton.querySelector(".fa-volume-xmark");
 
-  if (isMuted) {
-    volumeHighIcon.style.display = 'none';
-    volumeXmarkIcon.style.display = 'inline';
-  } else {
-    volumeHighIcon.style.display = 'inline';
-    volumeXmarkIcon.style.display = 'none';
-  }
-});
+    if (isMuted) {
+      volumeHighIcon.style.display = "none";
+      volumeXmarkIcon.style.display = "inline";
+    } else {
+      volumeHighIcon.style.display = "inline";
+      volumeXmarkIcon.style.display = "none";
+    }
+  });
 
 document
   .getElementById("difficulty-setting")
@@ -279,37 +290,46 @@ document
     createBoard(gameRows, gameCols, selectedCategory);
   });
 
-document.getElementById("category-setting").addEventListener("change", (event) => {
-  selectedCategory = event.target.value;
-  createBoard(gameRows, gameCols, selectedCategory);
-});
+document
+  .getElementById("category-setting")
+  .addEventListener("change", (event) => {
+    selectedCategory = event.target.value;
+    createBoard(gameRows, gameCols, selectedCategory);
+  });
 
-document.getElementById('game-controls-viewer').addEventListener('click', () => {
-  const gameControls = document.getElementById('game-controls');
-  if (gameControls.style.height === '0px' || gameControls.style.height === '') {
-    gameControls.style.height = `${gameControls.scrollHeight + 17}px`;
-  } else {
-    gameControls.style.height = '0px';
-  }
-});
+document
+  .getElementById("game-controls-viewer")
+  .addEventListener("click", () => {
+    const gameControls = document.getElementById("game-controls");
+    if (
+      gameControls.style.height === "0px" ||
+      gameControls.style.height === ""
+    ) {
+      gameControls.style.height = `${gameControls.scrollHeight + 17}px`;
+    } else {
+      gameControls.style.height = "0px";
+    }
+  });
 
-document.getElementById('volume-control').addEventListener('click', () => {
+document.getElementById("volume-control").addEventListener("click", () => {
   isMuted = !isMuted;
-  const volumeControlButton = document.getElementById('volume-control');
-  const volumeHighIcon = volumeControlButton.querySelector('.fa-volume-high');
-  const volumeXmarkIcon = volumeControlButton.querySelector('.fa-volume-xmark');
+  const volumeControlButton = document.getElementById("volume-control");
+  const volumeHighIcon = volumeControlButton.querySelector(".fa-volume-high");
+  const volumeXmarkIcon = volumeControlButton.querySelector(".fa-volume-xmark");
 
   if (isMuted) {
-    volumeHighIcon.style.display = 'none';
-    volumeXmarkIcon.style.display = 'inline';
+    volumeHighIcon.style.display = "none";
+    volumeXmarkIcon.style.display = "inline";
   } else {
-    volumeHighIcon.style.display = 'inline';
-    volumeXmarkIcon.style.display = 'none';
+    volumeHighIcon.style.display = "inline";
+    volumeXmarkIcon.style.display = "none";
   }
 });
 
 function populateCategoryDropdown() {
-  const categoryDropdownStart = document.getElementById("category-setting-start");
+  const categoryDropdownStart = document.getElementById(
+    "category-setting-start"
+  );
   const categoryDropdown = document.getElementById("category-setting");
   categoryDropdownStart.innerHTML = ""; // Clear existing options
   categoryDropdown.innerHTML = ""; // Clear existing options
@@ -317,7 +337,8 @@ function populateCategoryDropdown() {
   Object.keys(cards).forEach((category) => {
     const optionStart = document.createElement("option");
     optionStart.value = category;
-    optionStart.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+    optionStart.textContent =
+      category.charAt(0).toUpperCase() + category.slice(1);
     categoryDropdownStart.appendChild(optionStart);
 
     const option = document.createElement("option");
@@ -344,7 +365,7 @@ function createBoard(rows, cols, category) {
   // Apply remove animation to existing cards
   const existingCards = board.querySelectorAll(".game-card");
   existingCards.forEach((card, index) => {
-    card.style.transform = 'translateY(0) rotateX(0)'; // Set initial state
+    card.style.transform = "translateY(0) rotateX(0)"; // Set initial state
     card.style.zIndex = 1; // Ensure the card is above the new cards
     card.classList.add("removing");
     card.style.animationDelay = `${index * 0.1}s`;
@@ -377,7 +398,6 @@ function createBoard(rows, cols, category) {
     // Shuffle the card values
     cardValues.sort(() => 0.5 - Math.random());
 
-
     let cardIndex = 0;
     for (let row = 0; row < rows; row++) {
       const rowElement = document.createElement("div");
@@ -405,7 +425,6 @@ function createBoard(rows, cols, category) {
       }
 
       board.appendChild(rowElement);
-
     }
 
     // Add the deal class to each card one at a time
@@ -437,7 +456,6 @@ function createBoard(rows, cols, category) {
  *    - If they do not match, flips the cards back after a delay.
  */
 function flipCard(e) {
-
   let card = e.currentTarget;
 
   // card.style.pointerEvents = none;
@@ -454,8 +472,8 @@ function flipCard(e) {
   if (flippedCards.length >= 2) return;
 
   //Stop flipping sound from playing on card that has already been flipped
-  if (card.classList.contains("flipped")) return
-  
+  if (card.classList.contains("flipped")) return;
+
   // Flip the clicked card
   card.classList.add("flipped");
 
@@ -467,7 +485,6 @@ function flipCard(e) {
 
   //Only check when two cards are flipped
   if (flippedCards.length === 2) {
-
     increaseCount("attemptCount");
 
     let firstCard = flippedCards[0];
@@ -479,26 +496,25 @@ function flipCard(e) {
       increaseCount("matchCount");
       //for each of the flipped cards add the matched class
       setTimeout(() => {
-        flippedCards.forEach(card => {
+        flippedCards.forEach((card) => {
           card.classList.replace("flipped", "matched");
           //card.removeChild(card.lastChild);
           console.log(card);
         });
         playMatchSound();
       }, 800);
-
-
     } else {
       console.log("No match");
       //wait 0.8 seconds then remove the flipped class from each card
       setTimeout(() => {
-        flippedCards.forEach(card => card.classList.toggle("flipped"));
+        flippedCards.forEach((card) => card.classList.toggle("flipped"));
       }, 800);
     }
   } else {
     console.log(`Only ${flippedCards.length} card has been flipped`);
   }
-  document.getElementById("accuracyVal").innerText = calculateAccuracy().toString();
+  document.getElementById("accuracyVal").innerText =
+    calculateAccuracy().toString();
 }
 
 function completeGame() {
@@ -507,7 +523,7 @@ function completeGame() {
   const attempts = parseInt(document.getElementById("attemptCount").innerText);
   const accuracy = calculateAccuracy().toString();
   const difficulty = document.getElementById("difficulty-setting").value;
-  
+
   // Call this function when you want to restart the match effect
   restartMatchAnimation();
 
@@ -520,58 +536,60 @@ function completeGame() {
     saveScore(difficulty, finalTime, attempts);
 
     // Show the congratulations modal
-    const congratsModal = new bootstrap.Modal(document.getElementById('congratsModal'));
-    document.getElementById('final-time').textContent = finalTime;
-    document.getElementById('final-attempts').textContent = attempts;
-    document.getElementById('final-accuracy').textContent = accuracy;
+    const congratsModal = new bootstrap.Modal(
+      document.getElementById("congratsModal")
+    );
+    document.getElementById("final-time").textContent = finalTime;
+    document.getElementById("final-attempts").textContent = attempts;
+    document.getElementById("final-accuracy").textContent = accuracy;
     congratsModal.show();
   }, 3000);
-
-
 }
 
-function calculateAccuracy(){
-    const matchCount = parseInt(document.getElementById("matchCount").innerText);
-    const attempts = parseInt(document.getElementById("attemptCount").innerText);
+function calculateAccuracy() {
+  const matchCount = parseInt(document.getElementById("matchCount").innerText);
+  const attempts = parseInt(document.getElementById("attemptCount").innerText);
 
-    if(matchCount && attempts){
-      accuracy = ((matchCount / attempts) * 100).toFixed(2);
-      return accuracy;
-    }
+  if (matchCount && attempts) {
+    accuracy = ((matchCount / attempts) * 100).toFixed(2);
+    return accuracy;
+  }
 }
 
 function restartMatchAnimation() {
-
   //wait for last matched card animation to run
   setTimeout(() => {
     let matchedCards = document.querySelectorAll(".matched");
-    matchedCards.forEach(card => {
-        console.log(card);
-        card.classList.remove("matched"); // Remove the class
-        void card.offsetWidth; // Force a reflow to restart animation
-        card.classList.add("matched"); // Re-add the class
+    matchedCards.forEach((card) => {
+      console.log(card);
+      card.classList.remove("matched"); // Remove the class
+      void card.offsetWidth; // Force a reflow to restart animation
+      card.classList.add("matched"); // Re-add the class
     });
   }, 800);
 }
-
 
 function saveScore(difficulty, time, attempts) {
   const currentScore = { time, attempts, date: Date.now() };
   const savedScore = JSON.parse(localStorage.getItem(difficulty));
 
   if (savedScore) {
-    const savedTime = savedScore.time.split(':').map(Number);
-    const currentTime = time.split(':').map(Number);
+    const savedTime = savedScore.time.split(":").map(Number);
+    const currentTime = time.split(":").map(Number);
 
-    const savedScoreValue = savedTime[0] * 3600 + savedTime[1] * 60 + savedTime[2] + savedScore.attempts;
-    const currentScoreValue = currentTime[0] * 3600 + currentTime[1] * 60 + currentTime[2] + attempts;
+    const savedScoreValue =
+      savedTime[0] * 3600 +
+      savedTime[1] * 60 +
+      savedTime[2] +
+      savedScore.attempts;
+    const currentScoreValue =
+      currentTime[0] * 3600 + currentTime[1] * 60 + currentTime[2] + attempts;
 
     if (currentScoreValue < savedScoreValue) {
       localStorage.setItem(difficulty, JSON.stringify(currentScore));
       notifyNewHighScore();
     } else {
-
-      const existingHighScoreMessage = document.querySelector('.high_score');
+      const existingHighScoreMessage = document.querySelector(".high_score");
       if (existingHighScoreMessage) {
         document.removeChild(existingHighScoreMessage);
       }
@@ -581,7 +599,7 @@ function saveScore(difficulty, time, attempts) {
     notifyNewHighScore();
   }
 
-  populateHighScores()
+  populateHighScores();
 
   // Set expiration for 3 months
   const expirationDate = new Date();
@@ -590,19 +608,21 @@ function saveScore(difficulty, time, attempts) {
 }
 
 function notifyNewHighScore() {
-  const congratsModalBody = document.querySelector('#congratsModal .modal-body');
-  const newHighScoreMessage = document.createElement('p');
-  newHighScoreMessage.textContent = 'New High Score!';
-  newHighScoreMessage.classList.add('high_score');
+  const congratsModalBody = document.querySelector(
+    "#congratsModal .modal-body"
+  );
+  const newHighScoreMessage = document.createElement("p");
+  newHighScoreMessage.textContent = "New High Score!";
+  newHighScoreMessage.classList.add("high_score");
   congratsModalBody.appendChild(newHighScoreMessage);
 }
 
 function populateHighScores() {
-  const difficulties = ['easy', 'medium', 'hard'];
-  const highScoresList = document.getElementById('high-scores-list');
-  highScoresList.innerHTML = '';
+  const difficulties = ["easy", "medium", "hard"];
+  const highScoresList = document.getElementById("high-scores-list");
+  highScoresList.innerHTML = "";
 
-  difficulties.forEach(difficulty => {
+  difficulties.forEach((difficulty) => {
     const savedScore = JSON.parse(localStorage.getItem(difficulty));
     if (savedScore) {
       const expiration = localStorage.getItem(`${difficulty}_expiration`);
@@ -610,9 +630,11 @@ function populateHighScores() {
         localStorage.removeItem(difficulty);
         localStorage.removeItem(`${difficulty}_expiration`);
       } else {
-        const listItem = document.createElement('li');
-        listItem.className = 'list-group-item';
-        listItem.textContent = `${difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}: Time - ${savedScore.time}, Attempts - ${savedScore.attempts}`;
+        const listItem = document.createElement("li");
+        listItem.className = "list-group-item";
+        listItem.textContent = `${
+          difficulty.charAt(0).toUpperCase() + difficulty.slice(1)
+        }: Time - ${savedScore.time}, Attempts - ${savedScore.attempts}`;
         highScoresList.appendChild(listItem);
       }
     }
@@ -625,7 +647,7 @@ function increaseCount(elementId) {
 
   // Check if all cards have been matched
 
-  if (elementId == 'matchCount' && newCount === (gameRows * gameCols) / 2) {
+  if (elementId == "matchCount" && newCount === (gameRows * gameCols) / 2) {
     completeGame();
   }
 }
@@ -651,18 +673,19 @@ function updateTimer() {
   const seconds = Math.floor((elapsedTime / 1000) % 60);
   const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
 
-  document.querySelector("#game-timer span").textContent =
-    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  document.querySelector("#game-timer span").textContent = `${String(
+    minutes
+  ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Populate the category dropdown on page load
   populateCategoryDropdown();
   // Check for any previous high scores and populate the leaderboard
   populateHighScores();
 
   // Preload the flip sound
-  preloadedFlipSound = new Audio('assets/sounds/flipcard.mp3');
+  preloadedFlipSound = new Audio("assets/sounds/flipcard.mp3");
   preloadedFlipSound.load();
 });
 
@@ -674,7 +697,7 @@ function playShuffleSound(duration) {
 
 function playFlipSound() {
   if (isMuted) return;
-  const flipSound = new Audio('assets/sounds/flipcard.mp3');
+  const flipSound = new Audio("assets/sounds/flipcard.mp3");
   flipSound.play();
 }
 
