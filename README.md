@@ -66,7 +66,7 @@ Google Lighthouse to assess the site's performance, accessibility, and SEO. By c
 
 ## Manual Testing: 
 
-Manual tests were conducted to ensure the functionality and responsiveness of the website. Each link was manually tested to confirm that it redirected to the correct destination. All sections were checked for responsiveness across different devices (desktop, tablet, and mobile) to ensure that the layout adjusted properly and remained user-friendly. Additionally, hover effects were tested by interacting with various elements like buttons and navigation items to verify that the visual changes (bold text) worked consistently. These tests helped ensure a seamless user experience and proper functionality across the site.
+Throughout development, manual testing was conducted to verify the website's functionality and responsiveness. Each section was evaluated across desktop, tablet, and mobile devices to ensure the layout adapted correctly and maintained a user-friendly experience. Additionally, CSS animations and sound effects underwent rigorous testing to ensure consistency and performance. These efforts helped deliver a seamless user experience and optimal site functionality.
 
 ## Validator Testing
 
@@ -74,7 +74,6 @@ Manual tests were conducted to ensure the functionality and responsiveness of th
 
 * **CSS** : No errors were returned when passing through the official [W3C CSS validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
  
-
 
 ## Deployment
 
@@ -92,13 +91,14 @@ Deployment steps:
 
 ## Credits
 
-[GitHub Copilot](https://copilot.github.com) was used to generate the games logo. It was also used to accelerate development. 
+[GitHub Copilot](https://copilot.github.com) was utilized to generate the games logo and accelerate development. 
 
 
 ## Future Enhancements
 
 - It is hard to see the game cards when the game is on highest dificulty as. This will need to be addressed in future iterations to improve UX.
 - Add more card category images
+- Add more images for the back of the cards
 
 ## License
 
