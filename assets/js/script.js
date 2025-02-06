@@ -356,6 +356,9 @@ function createBoard(rows, cols, category) {
   document.getElementById("matchCount").innerText = 0;
   // reset the attempts count
   document.getElementById("attemptCount").innerText = 0;
+  // reset the accuracy count
+  document.getElementById("accuracyVal").innerText = "0.00";
+
   // Reset the timer
   resetTimer();
 
