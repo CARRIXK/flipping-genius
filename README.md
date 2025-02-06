@@ -16,15 +16,31 @@ This project is built using the following technologies:
 - FontAwesome – Icons for UI enhancements
 - CSS-Pattern.com - Used for the back style of the cards
 - RealFaviconGenerator - Create a favicon file
+- Github co-pilot
 
-## Development Team
+##CREDITS
+
+This project would not have been possible without the support and contributions of the following individuals and resources:
+
+### Contributors-Development Team
 
 Flipping Genius is a collaborative effort developed by:
 
-- David Coles
-- Carrick Entwistle
-- Nils Olov Lugner
-- Josh Williams
+- Carrick Entwistle - Project lead, Initial development and testing ([LinkedIn]https://linkedin.com/in/carrick-entwistle))
+- David Coles - Initial development, Frontend, UIX and testing/debugging ([LinkedIn] https://linkedin.com/in/davidcolesuk))
+- Nils Lugner - Cards and UI, testing, Revenue Generation ([LinkedIn](https://www.linkedin.com/in/nils-lugner))
+- Josh Williams - Sound effects and UI,
+
+### Special Thanks
+
+**Carrick Entwistle** Providing feedback and suggestions
+.**David Coles** for his invalueable Javascript effort.
+
+### Resources
+
+- [Teach Prints](https://www.teachprints.com/) - For providing free images used in the project.
+- [PixlR](https://www.pixlr.comunsplash.com/) - For providing free image convertion used in the project.
+- [Font Awesome](https://fontawesome.com/) - For the icons used in the project.
 
 ## Project Methodology
 
